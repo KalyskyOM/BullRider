@@ -113,6 +113,7 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* Stylesheets */}
         <link href="/static/style.css" rel="stylesheet" />
         <link href="/static/cycling-gallery.css" rel="stylesheet" />
+        <link href="/static/youtube-videos.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
         
         {/* Preload critical resources */}
@@ -132,6 +133,7 @@ export const renderer = jsxRenderer(({ children }) => {
               <li><a href="#about" className="nav-link">About</a></li>
               <li><a href="#achievements" className="nav-link">Achievements</a></li>
               <li><a href="#experience" className="nav-link">Experience</a></li>
+              <li><a href="#youtube-videos" className="nav-link">Videos</a></li>
               <li><a href="#cycling-gallery" className="nav-link">Gallery</a></li>
               <li><a href="#social-media" className="nav-link">Social Media</a></li>
               <li><a href="#contact" className="nav-link">Contact</a></li>
@@ -174,6 +176,7 @@ export const renderer = jsxRenderer(({ children }) => {
                   <li><a href="#about">About</a></li>
                   <li><a href="#achievements">Achievements</a></li>
                   <li><a href="#experience">Experience</a></li>
+                  <li><a href="#youtube-videos">Videos</a></li>
                   <li><a href="#cycling-gallery">Gallery</a></li>
                   <li><a href="#contact">Contact</a></li>
                 </ul>

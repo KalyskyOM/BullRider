@@ -25,12 +25,12 @@ app.get('/', (c) => {
           <p className="hero-subtitle">Professional Cyclist • Champion • BullRider</p>
           <div className="hero-stats">
             <div className="stat">
-              <span className="stat-number">500K+</span>
-              <span className="stat-label">Monthly Views</span>
+              <span className="stat-number">7</span>
+              <span className="stat-label">YouTube Videos</span>
             </div>
             <div className="stat">
-              <span className="stat-number">16</span>
-              <span className="stat-label">Years Old</span>
+              <span className="stat-number">3.4K+</span>
+              <span className="stat-label">Total Views</span>
             </div>
             <div className="stat">
               <span className="stat-number">Multiple</span>
@@ -38,7 +38,10 @@ app.get('/', (c) => {
             </div>
           </div>
           <div className="hero-actions">
-            <a href="#contact" className="btn-primary">Contact Me</a>
+            <a href="#youtube-videos" className="btn-primary">Watch Videos</a>
+            <a href="https://www.youtube.com/@manelic.1" target="_blank" rel="noopener" className="btn-secondary">
+              <i className="fab fa-youtube"></i> Subscribe
+            </a>
             <a href="#achievements" className="btn-secondary">View Achievements</a>
           </div>
         </div>
@@ -188,6 +191,102 @@ app.get('/', (c) => {
         </div>
       </section>
 
+      <section id="youtube-videos" className="youtube-videos">
+        <div className="container">
+          <h2>🎥 Latest Videos from @manelic.1</h2>
+          <p>Best moments riding bikes, exploring mountains, and championship racing</p>
+          <div className="videos-grid">
+            <div className="video-item featured">
+              <div className="video-thumbnail" data-video="FzXGJtFSG84">
+                <img src="https://i.ytimg.com/vi/FzXGJtFSG84/maxresdefault.jpg" alt="European Championship POV" />
+                <div className="play-button">▶</div>
+                <div className="video-overlay">
+                  <h3>POV European Championship Downhill Track</h3>
+                  <div className="video-stats">
+                    <span>3:22</span> • <span>84 views</span> • <span>1 month ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="video-item">
+              <div className="video-thumbnail" data-video="bernex-blue">
+                <img src="https://images.singletracks.com/blog/wp-content/uploads/2025/09/sitewrap_702926_right_1170.jpg" alt="Bernex Blue Line" />
+                <div className="play-button">▶</div>
+                <div className="video-overlay">
+                  <h3>BERNEX Blue Line</h3>
+                  <div className="video-stats">
+                    <span>2:25</span> • <span>40 views</span> • <span>1 month ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="video-item">
+              <div className="video-thumbnail" data-video="catalunya-run">
+                <img src="https://cloudfront-us-east-2.images.arcpublishing.com/reuters/QV2KNNY3UJJUDLI57LDFXOMTHY.jpg" alt="Full Run Catalunya" />
+                <div className="play-button">▶</div>
+                <div className="video-overlay">
+                  <h3>Full Run POV La Catalunya</h3>
+                  <div className="video-stats">
+                    <span>3:35</span> • <span>19 views</span> • <span>1 month ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="video-item">
+              <div className="video-thumbnail" data-video="vallnord">
+                <img src="https://bikerumor.com/wp-content/uploads/2023/06/2023-lenzerheide-world-cup-dh-rachel-atherton-finals-run.jpg" alt="Vallnord Commencal" />
+                <div className="play-button">▶</div>
+                <div className="video-overlay">
+                  <h3>Vallnord Commencal</h3>
+                  <div className="video-stats">
+                    <span>0:39</span> • <span>147 views</span> • <span>3 years ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="shorts-section">
+            <h3>🔥 Popular YouTube Shorts</h3>
+            <div className="shorts-grid">
+              <div className="short-item">
+                <div className="short-thumbnail">
+                  <img src="https://images.singletracks.com/blog/wp-content/uploads/2021/07/0e2d6f45-1e20-4e93-9cf6-78f414da08e5-750x500.jpg" alt="Bike Stand DIY" />
+                  <div className="short-badge">Shorts</div>
+                </div>
+                <h4>DIY Bike Stand Build</h4>
+                <p>1.3K views</p>
+              </div>
+              <div className="short-item">
+                <div className="short-thumbnail">
+                  <img src="https://assets.ucimtbworldseries.com/content/contentUploads/TFVp2u1tW9RHw3yWkLpQSmUO4jeeZRCyuY7v9yOb.jpg" alt="European Championship Training" />
+                  <div className="short-badge">Shorts</div>
+                </div>
+                <h4>European Championship Training</h4>
+                <p>1K views</p>
+              </div>
+              <div className="short-item">
+                <div className="short-thumbnail">
+                  <img src="https://ep1.pinkbike.org/p5pb9592724/p5pb9592724.jpg" alt="First Day DH Bike" />
+                  <div className="short-badge">Shorts</div>
+                </div>
+                <h4>First Day with DH Bike</h4>
+                <p>1.1K views</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="channel-cta">
+            <h3>Subscribe for More Cycling Content!</h3>
+            <p>"Best moments riding bikes. Being, exploring and enjoying the mountains. Best moments with the homies."</p>
+            <a href="https://www.youtube.com/@manelic.1" target="_blank" rel="noopener" className="btn-youtube">
+              <i className="fab fa-youtube"></i>
+              Subscribe to @manelic.1
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section id="cycling-gallery" className="cycling-gallery">
         <div className="container">
           <h2>Cycling Journey</h2>
@@ -205,39 +304,39 @@ app.get('/', (c) => {
               <div className="gallery-image">
                 <div className="gallery-overlay">
                   <h3 className="gallery-title">Natural Terrain</h3>
-                  <p className="gallery-description">Racing through New Zealand's breathtaking landscapes</p>
+                  <p className="gallery-description">Racing through European championship courses</p>
                 </div>
               </div>
             </div>
             <div className="gallery-item">
               <div className="gallery-image">
                 <div className="gallery-overlay">
-                  <h3 className="gallery-title">Forest Trails</h3>
-                  <p className="gallery-description">Navigating technical forest paths with expert control</p>
+                  <h3 className="gallery-title">Bernex Trails</h3>
+                  <p className="gallery-description">Exploring the famous Bernex blue line trails</p>
                 </div>
               </div>
             </div>
             <div className="gallery-item">
               <div className="gallery-image">
                 <div className="gallery-overlay">
-                  <h3 className="gallery-title">Mountain Racing</h3>
-                  <p className="gallery-description">Professional mountain bike racing at its finest</p>
+                  <h3 className="gallery-title">Catalunya Racing</h3>
+                  <p className="gallery-description">Full runs through Catalunya's technical courses</p>
                 </div>
               </div>
             </div>
             <div className="gallery-item">
               <div className="gallery-image">
                 <div className="gallery-overlay">
-                  <h3 className="gallery-title">Training Grounds</h3>
-                  <p className="gallery-description">Daily training sessions building championship-level skills</p>
+                  <h3 className="gallery-title">Training Sessions</h3>
+                  <p className="gallery-description">Daily training building championship-level skills</p>
                 </div>
               </div>
             </div>
             <div className="gallery-item">
               <div className="gallery-image">
                 <div className="gallery-overlay">
-                  <h3 className="gallery-title">Competition Ready</h3>
-                  <p className="gallery-description">Preparing for the toughest racing challenges worldwide</p>
+                  <h3 className="gallery-title">Vallnord Adventures</h3>
+                  <p className="gallery-description">Riding with Commencal bikes in Vallnord</p>
                 </div>
               </div>
             </div>

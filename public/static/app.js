@@ -328,10 +328,70 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // === YOUTUBE VIDEO FUNCTIONALITY ===
+    function initYouTubeVideos() {
+        const videoItems = document.querySelectorAll('.video-item');
+        
+        videoItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const thumbnail = item.querySelector('.video-thumbnail');
+                const videoId = thumbnail.dataset.video;
+                
+                if (videoId && videoId !== 'bernex-blue' && videoId !== 'catalunya-run' && videoId !== 'vallnord') {
+                    // Open actual YouTube video
+                    window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+                } else {
+                    // For placeholder videos, redirect to channel
+                    window.open('https://www.youtube.com/@manelic.1', '_blank');
+                }
+                
+                // Track video click analytics
+                console.log(`🎥 Video Click: ${videoId || 'placeholder'}`);
+            });
+        });
+
+        // YouTube Shorts clicks
+        const shortItems = document.querySelectorAll('.short-item');
+        shortItems.forEach(item => {
+            item.addEventListener('click', () => {
+                window.open('https://www.youtube.com/@manelic.1', '_blank');
+                console.log('📱 YouTube Short clicked');
+            });
+        });
+    }
+
+    // === SUBSCRIBE BUTTON TRACKING ===
+    function trackYouTubeSubscriptions() {
+        const subscribeButtons = document.querySelectorAll('a[href*="youtube.com/@manelic.1"]');
+        
+        subscribeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                console.log('🔔 YouTube Subscribe button clicked');
+                // Here you could integrate with analytics
+                // gtag('event', 'subscribe_click', { platform: 'youtube' });
+            });
+        });
+    }
+
+    // === HERO VIDEO STATS UPDATE ===
+    function updateVideoStats() {
+        // This could be connected to YouTube API for real-time stats
+        const stats = {
+            videos: 7,
+            totalViews: 3400, // Sum of all video views
+            subscribers: 14
+        };
+
+        console.log('📊 Current YouTube Stats:', stats);
+    }
+
     // === INITIALIZE ALL FEATURES ===
     trackPerformance();
     trackSocialClicks();
     initLazyLoading();
+    initYouTubeVideos();
+    trackYouTubeSubscriptions();
+    updateVideoStats();
 
     // Add loading animation
     document.body.classList.add('loading');
