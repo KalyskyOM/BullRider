@@ -188,6 +188,63 @@ app.get('/', (c) => {
         </div>
       </section>
 
+      <section id="cycling-gallery" className="cycling-gallery">
+        <div className="container">
+          <h2>Cycling Journey</h2>
+          <p>Experience the thrill and passion of professional cycling through Mael's world</p>
+          <div className="gallery-grid">
+            <div className="gallery-item">
+              <div className="gallery-image">
+                <div className="gallery-overlay">
+                  <h3 className="gallery-title">Trail Mastery</h3>
+                  <p className="gallery-description">Conquering challenging enduro trails with precision and skill</p>
+                </div>
+              </div>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image">
+                <div className="gallery-overlay">
+                  <h3 className="gallery-title">Natural Terrain</h3>
+                  <p className="gallery-description">Racing through New Zealand's breathtaking landscapes</p>
+                </div>
+              </div>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image">
+                <div className="gallery-overlay">
+                  <h3 className="gallery-title">Forest Trails</h3>
+                  <p className="gallery-description">Navigating technical forest paths with expert control</p>
+                </div>
+              </div>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image">
+                <div className="gallery-overlay">
+                  <h3 className="gallery-title">Mountain Racing</h3>
+                  <p className="gallery-description">Professional mountain bike racing at its finest</p>
+                </div>
+              </div>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image">
+                <div className="gallery-overlay">
+                  <h3 className="gallery-title">Training Grounds</h3>
+                  <p className="gallery-description">Daily training sessions building championship-level skills</p>
+                </div>
+              </div>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image">
+                <div className="gallery-overlay">
+                  <h3 className="gallery-title">Competition Ready</h3>
+                  <p className="gallery-description">Preparing for the toughest racing challenges worldwide</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="social-media" className="social-media">
         <div className="container">
           <h2>Digital Presence</h2>
