@@ -18,6 +18,7 @@
 ## 🌐 URLs
 
 - **Development**: https://3000-iafzrzxc9e44i35viw58v-6532622b.e2b.dev/
+- **YouTube Channel**: https://www.youtube.com/@manelic.1
 - **Production**: Ready for Cloudflare Pages deployment as `bullrider.pages.dev`
 - **GitHub**: Ready for repository setup and version control
 
@@ -42,11 +43,13 @@
 - **Ayudante de Mecánica** - Dosofftrack, Girona
 - **Jardinero** - Seasonal landscaping work
 
-### Digital Presence
-- **500,000+ monthly video views** across platforms
-- **Multi-platform strategy**: TikTok, Instagram, YouTube (@maelmassoutie)
+### Digital Presence & YouTube Channel
+- **YouTube Channel**: @manelic.1 with 7 videos and 3.4K+ total views
+- **Featured Content**: European championship POV, Bernex trails, Catalunya runs
+- **YouTube Shorts**: Popular content with 1K+ views each
+- **Channel Focus**: "Best moments riding bikes. Being, exploring and enjoying the mountains."
+- **Multi-platform strategy**: TikTok, Instagram, YouTube integration
 - **Brand alignment**: Young, consistent, cycling values
-- **Content creation**: Video generation and social media publications
 
 ## 👤 User Guide
 
@@ -83,14 +86,19 @@
 - **Analytics Ready**: Social media click tracking and performance monitoring
 
 ### Features Implemented
+- ✅ **YouTube Channel Integration** - Full @manelic.1 channel showcase with videos
+- ✅ **Hero Image from Channel** - European championship POV as hero background
+- ✅ **Interactive Video Gallery** - Featured videos with play buttons and stats
+- ✅ **YouTube Shorts Section** - Popular short-form content highlights
+- ✅ **Subscribe Integration** - Direct links to YouTube channel subscription
 - ✅ **Natural Color Palette** - Forest greens, earth browns, and sunset oranges
 - ✅ **Cycling Photography Integration** - Professional mountain bike racing imagery  
-- ✅ **Responsive Navigation** with mobile hamburger menu
-- ✅ **Hero Section** with animated cycling elements and mountain bike photography
+- ✅ **Responsive Navigation** with mobile hamburger menu and video section
+- ✅ **Hero Section** with YouTube channel branding and updated stats
 - ✅ **About Section** with skills visualization and personal story
 - ✅ **Achievements Timeline** with championship history
 - ✅ **Professional Experience** showcase
-- ✅ **Cycling Gallery** with interactive image showcase and trail descriptions
+- ✅ **Cycling Gallery** with trail descriptions matching video content
 - ✅ **Social Media Integration** with platform-specific styling
 - ✅ **Contact Form** with validation and professional inquiry options
 - ✅ **SEO Metadata** with structured data and social sharing
