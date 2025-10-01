@@ -8,17 +8,17 @@
     "preview": "vite preview",
     "start": "vite",
     "clean": "rm -rf dist",
-    "prebuild": "npm run clean",
-    "git:commit": "git add . && git commit -m"
+    "prebuild": "npm run clean"
   },
   "dependencies": {
-    "hono": "^4.9.9"
+    "hono": "^4.9.9",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
-    "@hono/vite-build": "^1.2.0",
-    "@hono/vite-dev-server": "^0.18.2",
     "@types/node": "^24.6.1",
-    "vite": "^6.3.5",
-    "wrangler": "^4.4.0"
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "vite": "^6.3.5"
   }
 }

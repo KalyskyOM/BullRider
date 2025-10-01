@@ -1,23 +1,7 @@
-import { Hono } from 'hono'
-import { cors } from 'hono/cors'
-import { serveStatic } from 'hono/cloudflare-workers'
-import { renderer } from './renderer'
+import { createRoot } from 'react-dom/client'
+import React from 'react'
 
-const app = new Hono()
-
-// Enable CORS for all routes
-app.use('*', cors())
-
-// Serve static files
-app.use('/static/*', serveStatic({ root: './public', manifest: {} }))
-app.use('/assets/*', serveStatic({ root: './public', manifest: {} }))
-
-// Use renderer middleware
-app.use(renderer)
-
-// Main page route
-app.get('/', (c) => {
-  return c.render(
+const App = () => (
     <div>
       <section className="hero">
         <div className="hero-content">
@@ -803,4 +787,8 @@ Sitemap: https://bullrider.pages.dev/sitemap.xml`
   return c.text(robots)
 })
 
-export default app
+const container = document.getElementById('app')
+if (container) {
+  const root = createRoot(container)
+  root.render(<App />)
+}
