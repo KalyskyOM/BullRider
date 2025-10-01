@@ -1,0 +1,184 @@
+/* Blog Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 46, 26, 0.95);
+  z-index: 1000;
+  overflow-y: auto;
+  backdrop-filter: blur(8px);
+}
+
+.modal.active {
+  display: block;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: var(--shadow-heavy);
+  overflow: hidden;
+}
+
+.modal-header {
+  position: relative;
+  padding: 1rem;
+  text-align: right;
+}
+
+.modal-close {
+  font-size: 2rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.modal-close:hover {
+  color: var(--nature-orange);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.modal-body {
+  padding: 0;
+}
+
+.blog-article {
+  background: white;
+}
+
+.blog-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.blog-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4rem 2rem 2rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+}
+
+.blog-hero-overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.blog-byline {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.blog-content {
+  padding: 3rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.blog-intro {
+  font-size: 1.25rem;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-light);
+  border-radius: 10px;
+  border-left: 4px solid var(--nature-orange);
+}
+
+.blog-content h2 {
+  color: var(--primary-color);
+  margin: 2rem 0 1rem;
+  font-size: 1.8rem;
+}
+
+.blog-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+}
+
+.blog-content ul {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 1rem auto;
+  }
+
+  .blog-hero {
+    height: 40vh;
+  }
+
+  .blog-hero-overlay h1 {
+    font-size: 1.8rem;
+  }
+
+  .blog-content {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .modal-header {
+    display: none;
+  }
+
+  .blog-hero {
+    height: auto;
+  }
+
+  .blog-hero-img {
+    max-height: 300px;
+  }
+
+  .blog-content {
+    padding: 0;
+  }
+}

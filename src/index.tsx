@@ -9,8 +9,8 @@ const app = new Hono()
 app.use('*', cors())
 
 // Serve static files
-app.use('/static/*', serveStatic({ root: './public' }))
-app.use('/assets/*', serveStatic({ root: './public' }))
+app.use('/static/*', serveStatic({ root: './public', manifest: {} }))
+app.use('/assets/*', serveStatic({ root: './public', manifest: {} }))
 
 // Use renderer middleware
 app.use(renderer)
@@ -52,7 +52,7 @@ app.get('/', (c) => {
 
       <section id="about" className="about">
         <div className="container">
-          <h2>About Mael</h2>
+          <h2>About Mael, Age 16</h2>
           <div className="about-grid">
             <div className="about-text">
               <p className="lead">
@@ -154,6 +154,181 @@ app.get('/', (c) => {
                 <h3>🥉 3º Campeonato de Catalunya Enduro</h3>
                 <p>3rd Place Catalunya Enduro Championship</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="race-performance" className="race-performance">
+        <div className="container">
+          <h2 className="centered-title">Race Performance</h2>
+          <p>Real-time racing data and performance analytics</p>
+          
+          <div className="performance-dashboard">
+            <div className="performance-header">
+              <div className="rider-info">
+                <h3>Mael MASSOUTIE BOVER</h3>
+                <div className="rider-details">
+                  <span className="category">Elite • Enduro</span>
+                  <span className="location">Girona, Spain</span>
+                </div>
+              </div>
+            </div>
+            <div className="performance-stats">
+              <div className="stat-item">
+                <span className="stat-label">Season Rank</span>
+                <span className="stat-value">#1</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-label">Points</span>
+                <span className="stat-value">485</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-label">Win Rate</span>
+                <span className="stat-value">78%</span>
+              </div>
+            </div>
+            
+            <div className="performance-grid">
+              <div className="performance-card">
+                <div className="card-icon">🏆</div>
+                <div className="card-content">
+                  <h4>Championship Wins</h4>
+                  <div className="card-value">5</div>
+                  <p>Copa de España & Catalunya</p>
+                </div>
+              </div>
+              
+              <div className="performance-card">
+                <div className="card-icon">🥇</div>
+                <div className="card-content">
+                  <h4>Podium Finishes</h4>
+                  <div className="card-value">12+</div>
+                  <p>Consistent top-3 results</p>
+                </div>
+              </div>
+              
+              <div className="performance-card">
+                <div className="card-icon">📈</div>
+                <div className="card-content">
+                  <h4>Performance Trend</h4>
+                  <div className="card-value">↗️</div>
+                  <p>Continuously improving</p>
+                </div>
+              </div>
+              
+              <div className="performance-card">
+                <div className="card-icon">⚡</div>
+                <div className="card-content">
+                  <h4>Elite Level</h4>
+                  <div className="card-value">Scratch</div>
+                  <p>Competing with pros</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="recent-results">
+              <h4>Recent Race Results</h4>
+              <div className="results-table">
+                <div className="result-header">
+                  <span>Date</span>
+                  <span>Event</span>
+                  <span>Category</span>
+                  <span>Position</span>
+                  <span>Time</span>
+                </div>
+                
+                <div className="result-row">
+                  <span>08 Sept 2024</span>
+                  <span>Copa de Catalunya Enduro</span>
+                  <span>Elite</span>
+                  <span className="position-1">1st</span>
+                  <span>2:45:32</span>
+                </div>
+                
+                <div className="result-row">
+                  <span>24 March 2024</span>
+                  <span>Copa de España Enduro</span>
+                  <span>Elite</span>
+                  <span className="position-1">1st</span>
+                  <span>3:12:18</span>
+                </div>
+                
+                <div className="result-row">
+                  <span>15 March 2024</span>
+                  <span>Campeonato Catalunya</span>
+                  <span>Elite</span>
+                  <span className="position-3">3rd</span>
+                  <span>2:58:44</span>
+                </div>
+                
+                <div className="result-row">
+                  <span>20 Feb 2024</span>
+                  <span>Copa Catalunya Enduro</span>
+                  <span>Elite</span>
+                  <span className="position-1">1st</span>
+                  <span>2:41:09</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="performance-stats">
+              <div className="stat-item">
+                <span className="stat-label">Avg. Finish Position</span>
+                <span className="stat-value">1.8</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-label">Best Lap Time</span>
+                <span className="stat-value">2:41:09</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-label">Races Completed</span>
+                <span className="stat-value">25+</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-label">Championship Points</span>
+                <span className="stat-value">485</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="latest-blog" className="latest-blog">
+        <div className="container">
+          <h2 className="centered-title">Latest Blog</h2>
+          <p>Discover the inspiring journey and insights from the trail</p>
+          
+          <div className="blog-preview-card">
+            <div className="blog-preview-image">
+              <img 
+                src="https://page.gensparksite.com/v1/base64_upload/b49543c410aaac1e42dce09c5a1500e2" 
+                alt="From Zero to Hero - Mael's Journey"
+                className="blog-preview-img"
+              />
+              <div className="blog-preview-overlay">
+                <span className="blog-category">Featured Story</span>
+                <span className="blog-read-time">8 min read</span>
+              </div>
+            </div>
+            
+            <div className="blog-preview-content">
+              <h3 className="blog-preview-title">From Zero to Hero: My Journey to Spanish Enduro Champion</h3>
+              <p className="blog-preview-excerpt">
+                "I've always believed that talent and luck don't exist. The only thing that's real is discipline." 
+                Discover how a five-year-old kid on a trail bike became the Spanish Enduro Champion through dedication, 
+                perseverance, and an unwavering commitment to excellence.
+              </p>
+              
+              <div className="blog-preview-meta">
+                <span className="blog-author">By Mael Massoutie</span>
+                <span className="blog-date">Latest</span>
+              </div>
+              
+              <button className="blog-preview-btn" id="blog-preview-read">
+                <i className="fas fa-book-open"></i>
+                Read Full Story
+              </button>
             </div>
           </div>
         </div>
@@ -292,11 +467,11 @@ app.get('/', (c) => {
           <h2>Cycling Journey</h2>
           <p>Experience the thrill and passion of professional cycling through Mael's world</p>
           <div className="gallery-grid">
-            <div className="gallery-item">
+            <div className="gallery-item clickable" id="hero-story-gallery">
               <div className="gallery-image">
                 <div className="gallery-overlay">
-                  <h3 className="gallery-title">Trail Mastery</h3>
-                  <p className="gallery-description">Conquering challenging enduro trails with precision and skill</p>
+                  <h3 className="gallery-title">From Zero to Hero</h3>
+                  <p className="gallery-description">The inspiring journey from beginner to Spanish Enduro Champion</p>
                 </div>
               </div>
             </div>
@@ -340,6 +515,22 @@ app.get('/', (c) => {
                 </div>
               </div>
             </div>
+            <div className="gallery-item">
+              <div className="gallery-image">
+                <div className="gallery-overlay">
+                  <h3 className="gallery-title">YT Review</h3>
+                  <p className="gallery-description">Professional bike testing and review sessions</p>
+                </div>
+              </div>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image">
+                <div className="gallery-overlay">
+                  <h3 className="gallery-title">Racing Mental Tips</h3>
+                  <p className="gallery-description">Mental preparation and focus techniques for competitive racing</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -368,7 +559,7 @@ app.get('/', (c) => {
             </a>
             <a href="https://www.instagram.com/maelmassoutie" target="_blank" rel="noopener" className="social-link instagram">
               <i className="icon-instagram"></i>
-              <span>Instagram</span>
+              <span>@maelmassoutie</span>
             </a>
             <a href="https://www.youtube.com/@maelmassoutie" target="_blank" rel="noopener" className="social-link youtube">
               <i className="icon-youtube"></i>
@@ -392,14 +583,6 @@ app.get('/', (c) => {
                 <div className="contact-item">
                   <i className="icon-email"></i>
                   <span>maelmassoutie@gmail.com</span>
-                </div>
-                <div className="contact-item">
-                  <i className="icon-phone"></i>
-                  <span>+34 682 501 701</span>
-                </div>
-                <div className="contact-item">
-                  <i className="icon-location"></i>
-                  <span>R. Maria Pare Plaret N9, Girona, Spain</span>
                 </div>
               </div>
             </div>
@@ -426,7 +609,7 @@ app.get('/', (c) => {
                 </div>
                 <div className="form-group">
                   <label htmlFor="message">Message</label>
-                  <textarea id="message" name="message" rows="5" required></textarea>
+                  <textarea id="message" name="message" rows={5} required></textarea>
                 </div>
                 <button type="submit" className="btn-primary">Send Message</button>
               </form>
@@ -434,6 +617,136 @@ app.get('/', (c) => {
           </div>
         </div>
       </section>
+
+      {/* Blog Modal */}
+      <div id="blog-modal" className="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div className="modal-content">
+          <div className="modal-header">
+            <button 
+              className="modal-close" 
+              aria-label="Close modal"
+              title="Close"
+            >
+              <i className="fas fa-times"></i>
+            </button>
+          </div>
+          <div className="modal-body">
+            <article className="blog-article">
+              <div className="blog-hero">
+                <img 
+                  src="https://page.gensparksite.com/v1/base64_upload/b49543c410aaac1e42dce09c5a1500e2" 
+                  alt="Mael Massoutie racing - Spanish Enduro Champion"
+                  className="blog-hero-img"
+                />
+                <div className="blog-hero-overlay">
+                  <h1>From Zero to Hero: My Journey to Spanish Enduro Champion</h1>
+                  <p className="blog-byline">By Mael Massoutie</p>
+                </div>
+              </div>
+              
+              <div className="blog-content">
+                <div className="blog-intro">
+                  <p>I've always believed that talent and luck don't exist. The only thing that's real is discipline. Opportunities aren't random—they're built when you give 100% of yourself. This mindset has shaped everything I've become, and today, I want to share the story of how a five-year-old kid on a trail bike became the Spanish Enduro Champion.</p>
+                </div>
+
+                <h2>The Beginning: A Five-Year-Old's Passion</h2>
+                <p>I can still remember the feeling—small hands gripping oversized handlebars, feet barely reaching the pedals, and the pure joy of riding down trails that seemed like mountains to my five-year-old self. From that very first ride, something clicked. It wasn't just fun; it was a calling. While other kids moved from hobby to hobby, I knew I had found something special.</p>
+                
+                <p>Those early years weren't about competition or championships. They were about falling in love with the bike, with the dirt, with the freedom of the trails. Every weekend, every free moment, I was riding. My parents probably thought it was just a phase, but I was building the foundation of what would become my life's purpose.</p>
+
+                <h2>Growing Through Trial: The Foundation Years</h2>
+                <p>As I grew older, my passion evolved. I started working as a Trial and XCO monitor at Club BTT Fornells, teaching younger riders the same skills that had captivated me years before. There's something powerful about sharing what you love—it deepens your own understanding and commitment. Watching kids experience that same spark I had felt reminded me why I started this journey.</p>
+                
+                <p>I also spent time as a mechanic's assistant at Dosofftrack in Girona. Getting my hands dirty, understanding every component of my bike, learning how each adjustment could shave seconds off a run—this wasn't just a job. It was education. I learned that being a great rider meant understanding your machine inside and out.</p>
+
+                <h2>The Turning Point: Dedication Meets Opportunity</h2>
+                <p>At 16, I made a decision that would change everything. I set a clear goal: to become a professional cyclist. Not "maybe one day" or "if things work out." No. A concrete, unwavering commitment. I started training with real dedication, treating every ride as if it mattered, because it did.</p>
+
+                <h2>The Climb: 2024 Season</h2>
+                <p>2024 was my breakthrough year, but it didn't start with victories—it started with lessons.</p>
+                
+                <p>In February, at the first Copa de España race in Olívar, I finished 4th out of 10 riders. Not a podium, but a solid start. Two weeks later in March, at Sant Andreu de la Barca for Copa de España #2, I placed 18th out of 31 riders. That was a wake-up call. I could have been discouraged, but instead, I used it as fuel.</p>
+                
+                <p>The rest of the season, I worked relentlessly. I analyzed every run, every corner, every mistake. I trained when I was tired. I rode when it rained. And the results started coming.</p>
+                
+                <p>By the end of 2024, I had become the <strong>Copa de Catalunya Enduro Champion</strong> and secured <strong>3rd place in the Campeonato de Catalunya</strong>. The kid who placed 18th had transformed into a champion. But I wasn't satisfied. I knew I could go further.</p>
+
+                <h2>The Summit: 2025 Season</h2>
+                <p>2025 was the year everything aligned. I came into the season stronger, smarter, and hungrier than ever.</p>
+                
+                <p><strong>February 2025</strong> - Copa de España #1 at Sant Andreu de la Barca: I finished <strong>4th out of 31 riders</strong>, placing in the top 91% of the field with a time of 3:11.53. Solid, but I knew I had more to give.</p>
+                
+                <p><strong>March 2025</strong> - Copa de España #1: Another 4th place finish, this time with 3:16.13. Consistency was building, and I was knocking on the podium's door.</p>
+                
+                <p><strong>August 2025</strong> - UEC European Continental Championships at La Molina: This was the big one. Racing against the best young riders in Europe, I placed in the top 50% of the field. Competing at this level, against international competition, showed me I belonged among the elite.</p>
+                
+                <p>The culmination of all this work? I became the <strong>2025 Spanish Enduro Champion (Copa de España)</strong> and repeated as <strong>Copa de Catalunya Enduro Champion</strong>. I also improved to <strong>3rd in the Campeonato de Catalunya Enduro 2025</strong>.</p>
+
+                <h2>The Numbers Tell a Story</h2>
+                <p>Looking at my progression tells you everything you need to know about discipline:</p>
+                <ul>
+                  <li><strong>2024</strong>: Started at 18th place, finished as regional champion</li>
+                  <li><strong>2025</strong>: Consistent top-5 finishes, Spanish champion, European-level competitor</li>
+                  <li><strong>Performance trend</strong>: From mid-pack to podium regular in just one year</li>
+                </ul>
+                
+                <p>This wasn't magic. This was showing up every single day, even when progress felt invisible. This was choosing the bike over parties, training over sleeping in, discipline over comfort.</p>
+
+                <h2>Beyond the Bike: Building a Complete Package</h2>
+                <p>My journey hasn't just been about racing. I've built a digital presence that reaches over 500,000 monthly views across TikTok, Instagram, and YouTube (@maelmassoutie). I've learned to speak publicly, manage social media, and even do graphic design.</p>
+                
+                <p>Why? Because being a modern athlete means being a complete package. It means understanding that you're not just a rider—you're a brand, a story, an inspiration to others. Every video, every post, every interaction is another opportunity to show people what's possible when you commit fully to your dreams.</p>
+
+                <h2>What I've Learned: The Real Lessons</h2>
+                <p>Looking back from five years old to 16, from my first wobbly trail ride to Spanish Champion and European competitor, here's what this journey has taught me:</p>
+                
+                <p><strong>Setbacks are setups.</strong> That 18th place finish in March 2024? It didn't define me—it refined me. Every disappointing result became data, every mistake became a lesson.</p>
+                
+                <p><strong>Consistency beats intensity.</strong> I didn't become a champion through one heroic effort. I became a champion through thousands of ordinary days where I chose discipline over distraction.</p>
+                
+                <p><strong>The podium is built in the hours no one sees.</strong> For every race result you see, there are hundreds of hours of training, maintenance, recovery, and mental preparation that you don't.</p>
+                
+                <p><strong>Talent doesn't exist—only work.</strong> People see the championships and think I'm "talented." They don't see the 5am wake-ups, the crashes, the doubts, the days when my body screamed at me to stop but I kept going.</p>
+
+                <h2>What's Next: The Road Ahead</h2>
+                <p>This isn't the end of my story; it's just the beginning. At 16, with a Spanish championship, regional titles, and European competition experience under my belt, I'm hungrier than ever. My goal remains crystal clear: to become a professional cyclist.</p>
+                
+                <p>Every pedal stroke, every race, every sacrifice is a step toward that dream. I'm not chasing talent or waiting for luck. I'm building something real through discipline, day after day.</p>
+
+                <h2>A Message to Young Riders</h2>
+                <p>To everyone reading this, especially young riders wondering if they have what it takes: You do. But only if you're willing to give everything.</p>
+                
+                <p>Stop waiting for the perfect moment, the perfect conditions, the perfect circumstances. Start now. Be disciplined. Be consistent. Be relentless.</p>
+                
+                <p>When you finish 18th, come back and fight for 4th. When you get 4th, come back and fight for 1st. When you win regionally, fight for national. When you win nationally, take on Europe. Never stop climbing.</p>
+                
+                <p>The journey from zero to hero isn't a straight line—it's a mountain of effort, a trail of setbacks, and a finish line that keeps moving forward. There will be days when you place 18th and wonder if it's worth it. Trust me: it is. Because that 18th place is where champions are made.</p>
+                
+                <p>The question isn't whether you have what it takes. The question is: are you willing to do what it takes?</p>
+                
+                <p>See you on the podium.</p>
+
+                <div className="blog-footer">
+                  <hr />
+                  <p><em>Mael Massoutie is a 16-year-old Spanish Enduro Champion (2025), Copa de Catalunya Champion (2024-2025), and international DH-Enduro rider from Girona. Follow his journey on social media @maelmassoutie.</em></p>
+                  
+                  <div className="blog-social">
+                    <a href="https://www.instagram.com/maelmassoutie" target="_blank" rel="noopener">
+                      <i className="fab fa-instagram"></i> @maelmassoutie
+                    </a>
+                    <a href="https://www.tiktok.com/@maelmassoutie" target="_blank" rel="noopener">
+                      <i className="fab fa-tiktok"></i> TikTok
+                    </a>
+                    <a href="https://www.youtube.com/@manelic.1" target="_blank" rel="noopener">
+                      <i className="fab fa-youtube"></i> YouTube
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
     </div>
   )
 })

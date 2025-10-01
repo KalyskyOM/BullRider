@@ -58,7 +58,7 @@
 
 /* Specific gallery images */
 .gallery-item:nth-child(1) .gallery-image {
-  background-image: url('https://images.stockcake.com/public/2/0/8/2080833f-3309-49f3-8e6f-250195ab8a3d_large/intense-mountain-biking-stockcake.jpg');
+  background-image: url('https://page.gensparksite.com/v1/base64_upload/b49543c410aaac1e42dce09c5a1500e2');
 }
 
 .gallery-item:nth-child(2) .gallery-image {
@@ -79,6 +79,14 @@
 
 .gallery-item:nth-child(6) .gallery-image {
   background-image: url('https://cdn.mos.cms.futurecdn.net/k6Dem488iVf8UZQ8iYRr58.jpg');
+}
+
+.gallery-item:nth-child(7) .gallery-image {
+  background-image: url('https://page.gensparksite.com/v1/base64_upload/3a84516f942867b3dd2faceaa2e1a09e');
+}
+
+.gallery-item:nth-child(8) .gallery-image {
+  background-image: url('https://page.gensparksite.com/v1/base64_upload/49c2b78dfd9d1758487afa4d7372a7d5');
 }
 
 /* Mobile responsiveness */

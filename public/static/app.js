@@ -385,6 +385,60 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('📊 Current YouTube Stats:', stats);
     }
 
+    // === BLOG MODAL FUNCTIONALITY ===
+    function initBlogModal() {
+        const heroGalleryItem = document.getElementById('hero-story-gallery');
+        const blogPreviewBtn = document.getElementById('blog-preview-read');
+        const blogModal = document.getElementById('blog-modal');
+        const modalClose = document.querySelector('.modal-close');
+        
+        // Function to open the modal
+        const openModal = () => {
+            blogModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            console.log('📖 Blog modal opened: From Zero to Hero story');
+        };
+        
+        if (blogModal) {
+            // Open modal when clicking on the "From Zero to Hero" gallery item
+            if (heroGalleryItem) {
+                heroGalleryItem.addEventListener('click', openModal);
+            }
+            
+            // Open modal when clicking on the blog preview button
+            if (blogPreviewBtn) {
+                blogPreviewBtn.addEventListener('click', openModal);
+            }
+            
+            // Close modal when clicking the X button
+            if (modalClose) {
+                modalClose.addEventListener('click', () => {
+                    blogModal.classList.remove('active');
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                    console.log('📖 Blog modal closed');
+                });
+            }
+            
+            // Close modal when clicking outside the content
+            blogModal.addEventListener('click', (e) => {
+                if (e.target === blogModal) {
+                    blogModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    console.log('📖 Blog modal closed (clicked outside)');
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && blogModal.classList.contains('active')) {
+                    blogModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    console.log('📖 Blog modal closed (Escape key)');
+                }
+            });
+        }
+    }
+
     // === INITIALIZE ALL FEATURES ===
     trackPerformance();
     trackSocialClicks();
@@ -392,6 +446,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initYouTubeVideos();
     trackYouTubeSubscriptions();
     updateVideoStats();
+    initBlogModal();
 
     // Add loading animation
     document.body.classList.add('loading');

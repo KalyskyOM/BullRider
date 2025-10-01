@@ -21,6 +21,15 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
+  text-align: left;
+}
+
+.centered-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   line-height: 1.2;
@@ -463,12 +472,25 @@ section {
 
 /* Achievements Section */
 .achievements {
-  background: white;
+  background: 
+    linear-gradient(135deg, rgba(26,46,26,0.9), rgba(45,74,34,0.9)),
+    url('https://scontent-mad1-1.cdninstagram.com/v/t51.29350-15/470092433_1767315820728548_6876012304093869510_n.jpg') center/cover fixed;
+  color: white;
+  padding: 3rem 0;
+}
+
+.achievements h2 {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  margin-bottom: 2rem;
 }
 
 .achievements-timeline {
   position: relative;
   padding-left: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .achievements-timeline::before {
@@ -478,13 +500,14 @@ section {
   top: 0;
   bottom: 0;
   width: 4px;
-  background: var(--gradient-primary);
+  background: var(--nature-orange);
   border-radius: 2px;
+  box-shadow: 0 0 10px rgba(214, 126, 39, 0.5);
 }
 
 .achievement {
   display: flex;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   position: relative;
 }
 
@@ -495,31 +518,216 @@ section {
   top: 0;
   width: 20px;
   height: 20px;
-  background: var(--primary-color);
+  background: var(--nature-orange);
   border-radius: 50%;
   border: 4px solid white;
-  box-shadow: var(--shadow-light);
+  box-shadow: 0 0 15px rgba(214, 126, 39, 0.4);
 }
 
 .achievement-year {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--nature-orange);
-  min-width: 100px;
-  margin-right: 2rem;
+  min-width: 80px;
+  margin-right: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .achievement-content {
   flex: 1;
-  background: var(--bg-light);
-  padding: 1.5rem;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 1.2rem;
   border-radius: 10px;
-  box-shadow: var(--shadow-light);
+  box-shadow: var(--shadow-medium);
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .achievement-content h3 {
   margin-bottom: 0.5rem;
-  color: var(--text-dark);
+  color: white;
+}
+
+.achievement-content p {
+  color: rgba(255,255,255,0.9);
+}
+
+/* Race Performance Section */
+.race-performance {
+  background: linear-gradient(rgba(26,46,26,0.97), rgba(26,46,26,0.97)),
+    url('https://images.pexels.com/photos/71104/utah-mountain-biking-bike-biking-71104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center/cover fixed;
+  color: white;
+  padding: 5rem 0;
+}
+
+.race-performance h2 {
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.race-performance p {
+  color: rgba(255,255,255,0.9);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.performance-dashboard {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow-nature);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.performance-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.performance-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 15px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--nature-orange);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.rider-info h3 {
+  color: var(--nature-orange);
+  margin-bottom: 0.5rem;
+}
+
+.rider-details {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.performance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.performance-card {
+  background: rgba(255,255,255,0.1);
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.performance-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.15);
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--nature-orange);
+}
+
+.card-content h4 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.card-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--nature-orange);
+  margin: 0.5rem 0;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  margin: 0;
+}
+
+.recent-results {
+  background: rgba(0,0,0,0.2);
+  border-radius: 15px;
+  padding: 2rem;
+}
+
+.recent-results h4 {
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.result-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+  padding: 1rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--nature-orange);
+}
+
+.result-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  align-items: center;
+}
+
+.result-row:last-child {
+  border-bottom: none;
+}
+
+.position-1 {
+  color: gold;
+  font-weight: 700;
+}
+
+.position-2 {
+  color: silver;
+  font-weight: 700;
+}
+
+.position-3 {
+  color: #cd7f32;
+  font-weight: 700;
 }
 
 /* Experience Section */
