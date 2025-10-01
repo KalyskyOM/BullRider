@@ -17,57 +17,58 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close mobile menu when clicking on a link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            hamburger?.classList.remove('active');
             navMenu?.classList.remove('active');
         });
     });
 
     // === SMOOTH SCROLLING ===
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
         });
+      }
     });
+  });
 
-    // === NAVBAR SCROLL EFFECT ===
-    const navbar = document.querySelector('.navbar');
-    let lastScrollTop = 0;
+  // === NAVBAR SCROLL EFFECT ===
+  const navbar = document.querySelector('.navbar');
+  let lastScrollTop = 0;
 
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Add/remove scrolled class for styling
-        if (scrollTop > 100) {
-            navbar?.classList.add('scrolled');
-        } else {
-            navbar?.classList.remove('scrolled');
-        }
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Add/remove scrolled class for styling
+    if (scrollTop > 100) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
 
-        // Hide/show navbar on scroll
-        if (scrollTop > lastScrollTop && scrollTop > 200) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollTop = scrollTop;
-    });
+    // Hide/show navbar on scroll (only if navbar exists)
+    if (navbar) {
+      if (scrollTop > lastScrollTop && scrollTop > 200) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+    }
+    
+    lastScrollTop = scrollTop;
+  });
 
     // === SCROLL ANIMATIONS ===
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+  const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+  };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -521,13 +522,17 @@ setTimeout(() => {
 // === SERVICE WORKER REGISTRATION (PWA) ===
 // Register SW only on production host to avoid dev errors
 if ('serviceWorker' in navigator && /netlify\.app$/.test(location.hostname)) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(() => {
+  window.addEventListener('load', async () => {
+    try {
+      const res = await fetch('/sw.js', { method: 'HEAD' });
+      if (res.ok) {
+        await navigator.serviceWorker.register('/sw.js');
         console.log('🔧 Service Worker registered successfully');
-      })
-      .catch(() => {
-        console.log('Service Worker registration failed');
-      });
+      } else {
+        // sw.js missing; skip registration silently
+      }
+    } catch (e) {
+      // Network or other error; skip registering to avoid noisy logs
+    }
   });
 }

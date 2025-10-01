@@ -494,7 +494,7 @@ section {
 
 .achievements-timeline {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1rem;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -511,31 +511,17 @@ section {
   box-shadow: 0 0 10px rgba(214, 126, 39, 0.5);
 }
 
-.achievement {
-  display: flex;
-  margin-bottom: 2rem;
-  position: relative;
-}
-
 .achievement::before {
-  content: '';
-  position: absolute;
-  left: -10px;
-  top: 0;
-  width: 20px;
-  height: 20px;
-  background: var(--nature-orange);
-  border-radius: 50%;
-  border: 4px solid white;
-  box-shadow: 0 0 15px rgba(214, 126, 39, 0.4);
+  content: none;
+  display: none;
 }
 
 .achievement-year {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--nature-orange);
-  min-width: 80px;
-  margin-right: 1.5rem;
+  min-width: 56px;
+  margin-right: 1rem;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
