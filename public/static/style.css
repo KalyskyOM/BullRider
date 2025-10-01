@@ -19,6 +19,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Fluid media */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   text-align: left;
@@ -730,6 +736,80 @@ section {
   font-weight: 700;
 }
 
+/* Sponsors Section */
+.sponsors {
+  background:
+    linear-gradient(135deg, rgba(26,46,26,0.92), rgba(45,74,34,0.92)),
+    url('https://images.pexels.com/photos/71104/utah-mountain-biking-bike-biking-71104.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover fixed;
+  color: white;
+}
+
+.sponsors-subtitle {
+  text-align: center;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 2rem;
+}
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.sponsor-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: white;
+  box-shadow: var(--shadow-nature);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.sponsor-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.14);
+}
+
+.sponsor-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.25);
+  border-radius: 12px;
+  padding: 1rem;
+  min-height: 100px;
+}
+
+.sponsor-logo {
+  max-height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
+
+.sponsor-meta h3 {
+  margin: 0;
+  color: var(--nature-orange);
+}
+
+.sponsor-meta span {
+  display: block;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+}
+
+.sponsors-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
 /* Experience Section */
 .experience {
   background: 
@@ -981,7 +1061,18 @@ section {
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
+  .hero {
+    min-height: auto;
+    background-attachment: scroll;
+    padding: 3rem 0;
+  }
+
+  .cycling-animation {
+    width: 240px;
+    height: 240px;
+  }
+
   .hero-stats {
     flex-direction: column;
     gap: 1rem;
@@ -996,7 +1087,16 @@ section {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
+  /* Avoid parallax fixed on mobile for performance */
+  .about,
+  .experience,
+  .contact,
+  .race-performance {
+    background-attachment: scroll;
+    padding: 3rem 0;
+  }
+
   .about-highlights {
     flex-direction: column;
   }
@@ -1009,10 +1109,37 @@ section {
   .container {
     padding: 0 1rem;
   }
-  
+
   h1 { font-size: 2.5rem; }
   h2 { font-size: 2rem; }
   h3 { font-size: 1.5rem; }
+
+  /* Performance stats stack */
+  .performance-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  /* Results table: reduce columns on mobile */
+  .result-header,
+  .result-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1rem;
+  }
+  .result-header span:nth-child(3),
+  .result-header span:nth-child(5),
+  .result-row span:nth-child(3),
+  .result-row span:nth-child(5) {
+    display: none;
+  }
+
+  /* Larger tap targets */
+  .btn-primary,
+  .btn-secondary,
+  .social-link {
+    min-height: 48px;
+  }
 }
 
 /* Animation and Performance Enhancements */

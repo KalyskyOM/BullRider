@@ -35,6 +35,40 @@ const App = () => {
         </div>
       </section>
 
+      {/* Sponsors Section */}
+      <section id="sponsors" className="sponsors">
+        <div className="container">
+          <h2 className="centered-title">Sponsors & Partners</h2>
+          <p className="sponsors-subtitle">Proudly supported by industry-leading brands</p>
+
+          <div className="sponsors-grid">
+            <a className="sponsor-card" href="https://galfer.eu/" target="_blank" rel="noopener noreferrer" aria-label="Galfer Brakes">
+              <div className="sponsor-logo-wrap">
+                <img className="sponsor-logo" alt="Galfer Logo" src="https://galfer.eu/wp-content/uploads/2021/03/galfer-logo.svg" />
+              </div>
+              <div className="sponsor-meta">
+                <h3>GALFER</h3>
+                <span>Performance Braking Systems</span>
+              </div>
+            </a>
+
+            <a className="sponsor-card" href="https://www.crankbrothers.com/" target="_blank" rel="noopener noreferrer" aria-label="Crankbrothers">
+              <div className="sponsor-logo-wrap">
+                <img className="sponsor-logo" alt="Crankbrothers Logo" src="https://cdn.shopify.com/s/files/1/0700/2657/6326/files/Crankbrothers-Logo-Black_360x.png" />
+              </div>
+              <div className="sponsor-meta">
+                <h3>crankbrothers</h3>
+                <span>Wheels • Pedals • Components</span>
+              </div>
+            </a>
+          </div>
+
+          <div className="sponsors-cta">
+            <a className="btn-primary" href="#contact">Become a Sponsor</a>
+          </div>
+        </div>
+      </section>
+
       <section id="about" className="about">
         <div className="container">
           <h2>About Mael, Age 16</h2>
