@@ -47,7 +47,7 @@ const App = () => {
           <div className="sponsors-grid">
             <a className="sponsor-card" href="https://galfer.eu/" target="_blank" rel="noopener noreferrer" aria-label="Galfer Brakes">
               <div className="sponsor-logo-wrap">
-                <img className="sponsor-logo" alt="Galfer Logo" src="https://galfer.eu/wp-content/uploads/2021/03/galfer-logo.svg" />
+                <img className="sponsor-logo" alt="Galfer Logo" src="/static/galfer-logo.png" />
               </div>
               <div className="sponsor-meta">
                 <h3>GALFER</h3>
@@ -57,7 +57,7 @@ const App = () => {
 
             <a className="sponsor-card" href="https://www.crankbrothers.com/" target="_blank" rel="noopener noreferrer" aria-label="Crankbrothers">
               <div className="sponsor-logo-wrap">
-                <img className="sponsor-logo" alt="Crankbrothers Logo" src="https://cdn.shopify.com/s/files/1/0700/2657/6326/files/Crankbrothers-Logo-Black_360x.png" />
+                <img className="sponsor-logo" alt="Crankbrothers Logo" src="/static/crankbrothers-logo.png" />
               </div>
               <div className="sponsor-meta">
                 <h3>crankbrothers</h3>
