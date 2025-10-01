@@ -733,59 +733,7 @@ const App = () => (
       </div>
     </div>
   )
-})
-
-// API route for contact form
-app.post('/api/contact', async (c) => {
-  const formData = await c.req.json()
-  
-  // In production, you would integrate with email service like SendGrid or Resend
-  console.log('Contact form submission:', formData)
-  
-  return c.json({ 
-    success: true, 
-    message: 'Thank you for your message. Mael will get back to you soon!' 
-  })
-})
-
-// Sitemap route for SEO
-app.get('/sitemap.xml', (c) => {
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://bullrider.pages.dev/</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://bullrider.pages.dev/#about</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bullrider.pages.dev/#achievements</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-</urlset>`
-
-  c.header('Content-Type', 'application/xml')
-  return c.text(sitemap)
-})
-
-// Robots.txt route for SEO
-app.get('/robots.txt', (c) => {
-  const robots = `User-agent: *
-Allow: /
-
-Sitemap: https://bullrider.pages.dev/sitemap.xml`
-
-  c.header('Content-Type', 'text/plain')
-  return c.text(robots)
-})
+}
 
 const container = document.getElementById('app')
 if (container) {
