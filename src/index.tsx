@@ -1,7 +1,8 @@
 import { createRoot } from 'react-dom/client'
 import React from 'react'
 
-const App = () => (
+const App = () => {
+  return (
     <div>
       <section className="hero">
         <div className="hero-content">

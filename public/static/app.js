@@ -519,14 +519,15 @@ setTimeout(() => {
 }, 2000);
 
 // === SERVICE WORKER REGISTRATION (PWA) ===
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('🔧 Service Worker registered successfully');
-            })
-            .catch(error => {
-                console.log('Service Worker registration failed');
-            });
-    });
+// Register SW only on production host to avoid dev errors
+if ('serviceWorker' in navigator && /netlify\.app$/.test(location.hostname)) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => {
+        console.log('🔧 Service Worker registered successfully');
+      })
+      .catch(() => {
+        console.log('Service Worker registration failed');
+      });
+  });
 }
