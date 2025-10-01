@@ -27,6 +27,9 @@ const App = () => {
             <a href="https://www.youtube.com/@manelic.1" target="_blank" rel="noopener" className="btn-secondary">
               <i className="fab fa-youtube"></i> Subscribe
             </a>
+            <a href="https://www.tiktok.com/@maelmassoutie" target="_blank" rel="noopener" className="btn-secondary" aria-label="TikTok @maelmassoutie">
+              <i className="fab fa-tiktok"></i> @maelmassoutie
+            </a>
             <a href="#achievements" className="btn-secondary">View Achievements</a>
           </div>
         </div>
