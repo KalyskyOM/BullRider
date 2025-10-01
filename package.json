@@ -4,11 +4,11 @@
   "description": "BullRider - Professional cycling portfolio website for Mael Massoutie",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "start": "vite",
-    "clean-port": "fuser -k 3000/tcp 2>/dev/null || true",
-    "test": "curl http://localhost:3000",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
     "git:commit": "git add . && git commit -m"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@hono/vite-build": "^1.2.0",
     "@hono/vite-dev-server": "^0.18.2",
+    "@types/node": "^24.6.1",
     "vite": "^6.3.5",
     "wrangler": "^4.4.0"
   }
