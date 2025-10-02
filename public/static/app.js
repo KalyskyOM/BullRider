@@ -360,19 +360,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 const thumbnail = item.querySelector('.video-thumbnail');
                 const videoId = thumbnail.dataset.video;
                 
-                if (videoId && videoId !== 'bernex-blue' && videoId !== 'catalunya-run' && videoId !== 'vallnord') {
-                    // Open actual YouTube video
-                    window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-                } else {
-                    // For placeholder videos, redirect to channel
-                    window.open('https://www.youtube.com/@manelic.1', '_blank');
-                }
+                // Map of placeholder IDs to actual video URLs or channel
+                const videoMap = {
+                    'FzXGJtFSG84': 'https://www.youtube.com/watch?v=FzXGJtFSG84',
+                    'bernex-blue': 'https://www.youtube.com/@manelic.1/videos',
+                    'catalunya-run': 'https://www.youtube.com/@manelic.1/videos',
+                    'vallnord': 'https://www.youtube.com/@manelic.1/videos'
+                };
+                
+                const targetUrl = videoMap[videoId] || 'https://www.youtube.com/@manelic.1/videos';
+                window.open(targetUrl, '_blank');
                 
                 // Track video click analytics
-                console.log(`🎥 Video Click: ${videoId || 'placeholder'}`);
+                console.log(`🎥 Video Click: ${videoId || 'unknown'} -> ${targetUrl}`);
             });
         });
-
+        
         // YouTube Shorts clicks
         const shortItems = document.querySelectorAll('.short-item');
         shortItems.forEach(item => {
