@@ -124,8 +124,64 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // === CONTACT FORM HANDLING ===
-    // Netlify Forms handles submission automatically
-    // No custom JavaScript needed - form submits natively
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            
+            // Show loading state
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                });
+                
+                if (response.ok) {
+                    // Show success message in the form area
+                    const formContainer = contactForm.parentElement;
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'form-success-message';
+                    successMessage.innerHTML = `
+                        <div class="success-icon">✓</div>
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for reaching out! Mael will get back to you as soon as possible.</p>
+                        <p class="success-note">Your message has been received and will be reviewed shortly.</p>
+                    `;
+                    
+                    // Hide form and show success message
+                    contactForm.style.display = 'none';
+                    formContainer.appendChild(successMessage);
+                    
+                    // Also show notification
+                    showNotification('✓ Message sent successfully! Mael will get back to you soon.', 'success');
+                    
+                    // Reset form and restore after 10 seconds
+                    setTimeout(() => {
+                        contactForm.reset();
+                        contactForm.style.display = 'block';
+                        successMessage.remove();
+                    }, 10000);
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                console.error('Contact form error:', error);
+                showNotification('Sorry, there was an error sending your message. Please try again later.', 'error');
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
 
     // === NOTIFICATION SYSTEM ===
     function showNotification(message, type = 'info') {

@@ -610,7 +610,7 @@ const App = () => {
             </div>
             <div className="contact-form">
               <h3>Send a Message</h3>
-              <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+              <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="contact" />
                 {/* Honeypot field for spam bots (leave empty) */}
                 <div className="form-group" style={{ display: 'none' }} aria-hidden="true">
