@@ -56,10 +56,10 @@ p {
   font-weight: 300;
   font-style: italic;
   color: var(--primary-color);
-  border-left: 4px solid var(--nature-orange);
+  border-left: 4px solid var(--cycling-cyan);
   padding-left: 1rem;
   margin-bottom: 2rem;
-  background: linear-gradient(90deg, rgba(45,74,34,0.05), transparent);
+  background: linear-gradient(90deg, rgba(93,173,226,0.08), transparent);
   padding: 1rem 1rem 1rem 2rem;
   border-radius: 0 8px 8px 0;
 }
@@ -75,27 +75,27 @@ section {
   padding: 5rem 0;
 }
 
-/* Color Scheme - Natural Cycling Inspired */
+/* Color Scheme - Professional Cycling Jersey Inspired (Light Blue & Black) */
 :root {
-  --primary-color: #2d4a22; /* Forest green */
-  --secondary-color: #1a2e1a; /* Deep forest */
-  --accent-color: #8b6914; /* Earth brown/gold */
-  --success-color: #4a7c59; /* Trail green */
-  --bg-light: #f4f6f0; /* Natural light */
-  --bg-dark: #1a2e1a; /* Deep forest */
-  --text-light: #6b7a6b;
-  --text-dark: #1a2e1a;
-  --nature-orange: #d67e27; /* Sunset orange */
-  --trail-brown: #8b4513; /* Trail dirt */
-  --moss-green: #8fbc8f; /* Moss green */
-  --gradient-primary: linear-gradient(135deg, #2d4a22, #1a2e1a);
-  --gradient-secondary: linear-gradient(135deg, #1a2e1a, #0f1f0f);
-  --gradient-nature: linear-gradient(135deg, #2d4a22, #8b6914, #d67e27);
-  --gradient-earth: linear-gradient(135deg, #8b4513, #d67e27, #2d4a22);
+  --primary-color: #2c3e50; /* Deep charcoal */
+  --secondary-color: #1a252f; /* Racing black */
+  --accent-color: #5dade2; /* Cycling blue */
+  --success-color: #3498db; /* Bright blue */
+  --bg-light: #ecf0f1; /* Clean light gray */
+  --bg-dark: #2c3e50; /* Deep charcoal */
+  --text-light: #7f8c8d;
+  --text-dark: #2c3e50;
+  --cycling-cyan: #5dade2; /* Jersey light blue */
+  --racing-blue: #3498db; /* Vibrant blue */
+  --tech-blue: #85c1e9; /* Light tech blue */
+  --gradient-primary: linear-gradient(135deg, #2c3e50, #34495e);
+  --gradient-secondary: linear-gradient(135deg, #1a252f, #2c3e50);
+  --gradient-cycling: linear-gradient(135deg, #5dade2, #3498db);
+  --gradient-tech: linear-gradient(135deg, #85c1e9, #5dade2, #3498db);
   --shadow-light: 0 5px 15px rgba(0,0,0,0.08);
   --shadow-medium: 0 10px 30px rgba(0,0,0,0.15);
   --shadow-heavy: 0 20px 60px rgba(0,0,0,0.3);
-  --shadow-nature: 0 10px 40px rgba(45, 74, 34, 0.2);
+  --shadow-blue: 0 10px 40px rgba(93, 173, 226, 0.3);
 }
 
 /* Navigation */
@@ -127,7 +127,7 @@ section {
 }
 
 .nav-logo strong {
-  color: var(--nature-orange);
+  color: var(--cycling-cyan);
 }
 
 .nav-menu {
@@ -145,7 +145,7 @@ section {
 }
 
 .nav-link:hover {
-  color: var(--nature-orange);
+  color: var(--cycling-cyan);
 }
 
 .nav-link::after {
@@ -155,7 +155,7 @@ section {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--nature-orange);
+  background: var(--cycling-cyan);
   transition: width 0.3s ease;
 }
 
@@ -183,7 +183,7 @@ section {
   display: flex;
   align-items: center;
   background: 
-    linear-gradient(135deg, rgba(45,74,34,0.8), rgba(26,46,26,0.8)),
+    linear-gradient(135deg, rgba(44,62,80,0.85), rgba(26,37,47,0.85)),
     url('https://cloudfront-us-east-2.images.arcpublishing.com/reuters/QV2KNNY3UJJUDLI57LDFXOMTHY.jpg') center/cover fixed;
   color: white;
   position: relative;
@@ -223,7 +223,7 @@ section {
   z-index: 3;
   max-width: 600px;
   padding: 0 2rem;
-  background: rgba(26, 46, 26, 0.1);
+  background: rgba(44, 62, 80, 0.15);
   backdrop-filter: blur(5px);
   border-radius: 20px;
   margin: 2rem;
@@ -289,28 +289,28 @@ section {
 }
 
 .btn-primary {
-  background: var(--nature-orange);
+  background: var(--cycling-cyan);
   color: white;
-  box-shadow: var(--shadow-medium);
-  border: 2px solid var(--trail-brown);
+  box-shadow: var(--shadow-blue);
+  border: 2px solid var(--racing-blue);
 }
 
 .btn-primary:hover {
-  background: var(--trail-brown);
+  background: var(--racing-blue);
   transform: translateY(-2px);
   box-shadow: var(--shadow-heavy);
-  border-color: var(--nature-orange);
+  border-color: var(--tech-blue);
 }
 
 .btn-secondary {
   background: transparent;
   color: white;
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid var(--cycling-cyan);
 }
 
 .btn-secondary:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: white;
+  background: rgba(93,173,226,0.2);
+  border-color: var(--tech-blue);
 }
 
 .hero-image {
@@ -327,14 +327,14 @@ section {
   height: 400px;
   background: 
     url('https://i.ytimg.com/vi/FzXGJtFSG84/maxresdefault.jpg') center/cover,
-    linear-gradient(135deg, rgba(45,74,34,0.3), rgba(139,105,20,0.3));
+    linear-gradient(135deg, rgba(93,173,226,0.3), rgba(52,152,219,0.3));
   border-radius: 50%;
   position: relative;
   animation: rotate 25s linear infinite;
   box-shadow: 
-    0 0 50px rgba(45,74,34,0.4),
+    0 0 50px rgba(93,173,226,0.4),
     inset 0 0 50px rgba(0,0,0,0.2);
-  border: 4px solid var(--nature-orange);
+  border: 4px solid var(--cycling-cyan);
 }
 
 .cycling-animation::before {
@@ -360,7 +360,7 @@ section {
   font-weight: 700;
   text-align: center;
   color: white;
-  background: rgba(26,46,26,0.9);
+  background: rgba(44,62,80,0.9);
   padding: 1rem;
   border-radius: 10px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
@@ -394,7 +394,7 @@ section {
 .about {
   background: 
     url('https://images.singletracks.com/blog/wp-content/uploads/2018/01/CTC11800-X358591-orig.jpg') center/cover fixed,
-    linear-gradient(rgba(244,246,240,0.95), rgba(244,246,240,0.95));
+    linear-gradient(rgba(236,240,241,0.95), rgba(236,240,241,0.95));
   background-blend-mode: overlay;
 }
 
@@ -479,7 +479,7 @@ section {
 /* Achievements Section */
 .achievements {
   background: 
-    linear-gradient(135deg, rgba(26,46,26,0.9), rgba(45,74,34,0.9)),
+    linear-gradient(135deg, rgba(44,62,80,0.92), rgba(52,152,219,0.85)),
     url('https://scontent-mad1-1.cdninstagram.com/v/t51.29350-15/470092433_1767315820728548_6876012304093869510_n.jpg') center/cover fixed;
   color: white;
   padding: 3rem 0;
@@ -506,9 +506,9 @@ section {
   top: 0;
   bottom: 0;
   width: 4px;
-  background: var(--nature-orange);
+  background: var(--cycling-cyan);
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(214, 126, 39, 0.5);
+  box-shadow: 0 0 10px rgba(93, 173, 226, 0.6);
 }
 
 .achievement::before {
@@ -546,7 +546,7 @@ section {
 
 /* Race Performance Section */
 .race-performance {
-  background: linear-gradient(rgba(26,46,26,0.97), rgba(26,46,26,0.97)),
+  background: linear-gradient(rgba(44,62,80,0.94), rgba(26,37,47,0.94)),
     url('https://images.pexels.com/photos/71104/utah-mountain-biking-bike-biking-71104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center/cover fixed;
   color: white;
   padding: 5rem 0;
@@ -725,7 +725,7 @@ section {
 /* Sponsors Section */
 .sponsors {
   background:
-    linear-gradient(135deg, rgba(26,46,26,0.92), rgba(45,74,34,0.92)),
+    linear-gradient(135deg, rgba(44,62,80,0.92), rgba(52,152,219,0.88)),
     url('https://images.pexels.com/photos/71104/utah-mountain-biking-bike-biking-71104.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover fixed;
   color: white;
 }
@@ -800,7 +800,7 @@ section {
 .experience {
   background: 
     url('https://bike.shimano.com/content/dam/one-website/common/stories/in-between-the-races-with-damien-oton/1MediaSection_JunglePathRide_PC_v1.jpg') center/cover fixed,
-    linear-gradient(rgba(244,246,240,0.92), rgba(244,246,240,0.92));
+    linear-gradient(rgba(236,240,241,0.92), rgba(236,240,241,0.92));
   background-blend-mode: overlay;
 }
 
@@ -914,7 +914,7 @@ section {
 }
 
 .contact-item i {
-  color: var(--nature-orange);
+  color: var(--cycling-cyan);
   width: 20px;
 }
 
@@ -956,32 +956,32 @@ section {
 
 /* Form Success Message */
 .form-success-message {
-  background: linear-gradient(135deg, #4a7c59, #2d4a22);
-  border: 3px solid #8fbc8f;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  border: 3px solid #85c1e9;
   border-radius: 12px;
   padding: 3rem 2rem;
   text-align: center;
   animation: successSlideIn 0.5s ease-out;
-  box-shadow: 0 20px 60px rgba(74, 124, 89, 0.4);
+  box-shadow: 0 20px 60px rgba(93, 173, 226, 0.4);
 }
 
 .success-icon {
   width: 80px;
   height: 80px;
-  background: #8fbc8f;
+  background: #85c1e9;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-  color: #2d4a22;
+  color: #2c3e50;
   margin: 0 auto 1.5rem;
   animation: successPulse 0.6s ease-out;
-  box-shadow: 0 10px 30px rgba(143, 188, 143, 0.3);
+  box-shadow: 0 10px 30px rgba(133, 193, 233, 0.4);
 }
 
 .form-success-message h3 {
-  color: #8fbc8f;
+  color: #85c1e9;
   font-size: 2rem;
   margin-bottom: 1rem;
   font-weight: 700;
@@ -1066,7 +1066,7 @@ section {
 }
 
 .footer-social a:hover {
-  background: var(--nature-orange);
+  background: var(--cycling-cyan);
 }
 
 .footer-section ul {

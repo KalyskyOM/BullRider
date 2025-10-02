@@ -1,6 +1,6 @@
 /* Latest Blog Section */
 .latest-blog {
-  background: linear-gradient(rgba(26,46,26,0.97), rgba(26,46,26,0.97)),
+  background: linear-gradient(rgba(44,62,80,0.94), rgba(26,37,47,0.94)),
     url('https://images.pexels.com/photos/71104/utah-mountain-biking-bike-biking-71104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center/cover fixed;
   color: white;
   padding: 5rem 0;
@@ -59,7 +59,7 @@
 }
 
 .blog-category {
-  background: var(--nature-orange);
+  background: var(--cycling-cyan);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 50px;
@@ -102,7 +102,7 @@
 .blog-preview-btn {
   width: 100%;
   padding: 1rem;
-  background: var(--nature-orange);
+  background: var(--cycling-cyan);
   color: white;
   border: none;
   border-radius: 8px;
@@ -117,7 +117,7 @@
 }
 
 .blog-preview-btn:hover {
-  background: var(--trail-brown);
+  background: var(--racing-blue);
   transform: translateY(-2px);
 }
 
@@ -133,7 +133,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(26, 46, 26, 0.95);
+  background: rgba(44, 62, 80, 0.95);
   z-index: 1000;
   overflow-y: auto;
   backdrop-filter: blur(8px);
@@ -192,7 +192,7 @@
 }
 
 .modal-close:hover {
-  background: var(--nature-orange);
+  background: var(--cycling-cyan);
   color: white;
   transform: rotate(90deg);
 }

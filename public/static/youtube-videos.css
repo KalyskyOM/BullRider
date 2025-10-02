@@ -1,7 +1,7 @@
 /* YouTube Videos Section */
 .youtube-videos {
   background: 
-    linear-gradient(135deg, rgba(26,46,26,0.95), rgba(45,74,34,0.95)),
+    linear-gradient(135deg, rgba(44,62,80,0.92), rgba(52,152,219,0.88)),
     url('https://images.singletracks.com/blog/wp-content/uploads/2025/09/sitewrap_702926_right_1170.jpg') center/cover fixed;
   color: white;
   padding: 5rem 0;
@@ -85,7 +85,7 @@
 }
 
 .video-item:hover .play-button {
-  background: var(--nature-orange);
+  background: var(--cycling-cyan);
   color: white;
   transform: translate(-50%, -50%) scale(1.1);
 }
@@ -126,7 +126,7 @@
 
 .shorts-section h3 {
   margin-bottom: 2rem;
-  color: var(--nature-orange);
+  color: var(--cycling-cyan);
 }
 
 .shorts-grid {
@@ -196,7 +196,7 @@
 }
 
 .channel-cta h3 {
-  color: var(--nature-orange);
+  color: var(--cycling-cyan);
   margin-bottom: 1rem;
 }
 
