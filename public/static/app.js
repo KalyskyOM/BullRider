@@ -161,9 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     contactForm.style.display = 'none';
                     formContainer.appendChild(successMessage);
                     
-                    // Also show notification
-                    showNotification('✓ Message sent successfully! Mael will get back to you soon.', 'success');
-                    
                     // Reset form and restore after 10 seconds
                     setTimeout(() => {
                         contactForm.reset();
