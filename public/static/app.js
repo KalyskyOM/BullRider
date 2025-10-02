@@ -124,39 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // === CONTACT FORM HANDLING ===
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-            
-            // Show loading state
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-
-            try {
-                const response = await axios.post('/api/contact', data);
-                
-                if (response.data.success) {
-                    showNotification('Message sent successfully! Mael will get back to you soon.', 'success');
-                    contactForm.reset();
-                } else {
-                    throw new Error('Failed to send message');
-                }
-            } catch (error) {
-                console.error('Contact form error:', error);
-                showNotification('Sorry, there was an error sending your message. Please try again later.', 'error');
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-    }
+    // Netlify Forms handles submission automatically
+    // No custom JavaScript needed - form submits natively
 
     // === NOTIFICATION SYSTEM ===
     function showNotification(message, type = 'info') {
