@@ -32,5 +32,8 @@ lerna-debug.log*
 # misc
 .DS_Store
 
+# media files
+media/
+
 # Local Netlify folder
 .netlify
