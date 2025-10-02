@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } catch (error) {
                 console.error('Contact form error:', error);
-                showNotification('Sorry, there was an error sending your message. Please try again or contact directly via email.', 'error');
+                showNotification('Sorry, there was an error sending your message. Please try again later.', 'error');
             } finally {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
 - Deployed on Cloudflare Pages
 - SEO Optimized & Mobile Responsive
 
-📞 Contact: maelmassoutie@gmail.com
+📞 Contact: Please use the contact form at /#contact
 🌐 Follow: @maelmassoutie on all platforms
 
 Developed with ❤️ for cycling excellence.

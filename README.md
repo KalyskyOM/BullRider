@@ -29,7 +29,7 @@
 - **Age**: 16 years old (Born: January 28, 2009)
 - **Location**: Girona, Spain
 - **Languages**: Catalan (native), Spanish (native), English (advanced)
-- **Contact**: maelmassoutie@gmail.com, +34 682 501 701
+- **Contact**: Use the contact form at `/#contact`
 
 ### Championship Achievements
 - **2025**: Copa de España Enduro Champion
@@ -140,10 +140,9 @@
 ## 📞 Contact & Support
 
 - **Website Owner**: Mael Massoutie
-- **Email**: maelmassoutie@gmail.com
-- **Phone**: +34 682 501 701
+- **Contact**: Use the website contact form at `/#contact`
 - **Social Media**: @maelmassoutie (all platforms)
-- **Location**: R. Maria Pare Plaret N9, Girona, Spain
+- **Location**: Girona, Spain
 
 ## 🏁 Professional Goals
 

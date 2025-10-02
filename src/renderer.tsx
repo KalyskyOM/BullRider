@@ -4,7 +4,7 @@ export const renderer = jsxRenderer(({ children }) => {
   return (
     <html lang="es">
       <head>
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
         {/* Primary SEO Meta Tags */}
@@ -60,8 +60,7 @@ export const renderer = jsxRenderer(({ children }) => {
             },
             "contactPoint": {
               "@type": "ContactPoint",
-              "telephone": "+34-682-501-701",
-              "email": "maelmassoutie@gmail.com",
+              "url": "https://bullrider.pages.dev/#contact",
               "contactType": "professional"
             },
             "sameAs": [
@@ -190,8 +189,7 @@ export const renderer = jsxRenderer(({ children }) => {
               </div>
               <div className="footer-section">
                 <h4>Contact Info</h4>
-                <p><i className="fas fa-envelope"></i> maelmassoutie@gmail.com</p>
-                <p><i className="fas fa-phone"></i> +34 682 501 701</p>
+                <p>For inquiries, please use the contact form.</p>
                 <p><i className="fas fa-map-marker-alt"></i> Girona, Spain</p>
               </div>
             </div>
