@@ -122,13 +122,24 @@ const defaultRaceResults: RaceResult[] = [
 export const RaceDashboard: React.FC = () => {
   const [riderData, setRiderData] = useState<RiderData>(defaultRider)
   const [raceResults, setRaceResults] = useState<RaceResult[]>(defaultRaceResults)
-  const [activeTab, setActiveTab] = useState<'results' | 'performance'>('results')
-  const [showChampionshipModal, setShowChampionshipModal] = useState(false)
+  const [activeTab, setActiveTab] = useState<'results' | 'performance' | 'championships'>('results')
+  const [showModal, setShowModal] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const chartRef = useRef<HTMLCanvasElement>(null)
   const chartInstance = useRef<Chart | null>(null)
 
   useEffect(() => {
     loadData()
+    
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
   useEffect(() => {
@@ -320,91 +331,16 @@ export const RaceDashboard: React.FC = () => {
   const podiums = raceResults.filter(r => r.position === '2nd' || r.position === '3rd')
   const championships = raceResults.filter(r => r.event.toLowerCase().includes('champion'))
 
-  const ChampionshipModal = () => (
-    <div className="race-dashboard-container modal" onClick={() => setShowChampionshipModal(false)}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
-          <h2><i className="fas fa-trophy" style={{ color: '#ffd700', marginRight: '10px' }}></i>Championship Wins & Victories</h2>
-          <p className="modal-subtitle">Complete verified race results showing wins and championship titles</p>
-          <span className="close-modal" onClick={() => setShowChampionshipModal(false)}>&times;</span>
-        </div>
-        <div className="modal-body">
-          <div className="championship-summary">
-            <div className="summary-stats">
-              <div className="summary-stat">
-                <span className="stat-number">{wins.length}</span>
-                <span className="stat-label">Race Wins</span>
-              </div>
-              <div className="summary-stat">
-                <span className="stat-number">{championships.length}</span>
-                <span className="stat-label">Championships</span>
-              </div>
-              <div className="summary-stat">
-                <span className="stat-number">{wins.length + podiums.length}</span>
-                <span className="stat-label">Total Podiums</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="wins-section">
-            <h3><i className="fas fa-medal" style={{ color: '#ffd700', marginRight: '8px' }}></i>Race Wins (1st Place)</h3>
-            <div className="wins-table-container">
-              <table className="wins-table">
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Event</th>
-                    <th>Category</th>
-                    <th>Time</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {wins.map((result, index) => (
-                    <tr key={index}>
-                      <td>{formatDate(result.date)}</td>
-                      <td>{result.event}</td>
-                      <td>{result.category}</td>
-                      <td>{result.time}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          
-          {podiums.length > 0 && (
-            <div className="podiums-section">
-              <h3><i className="fas fa-award" style={{ color: '#c0c0c0', marginRight: '8px' }}></i>Podium Finishes (2nd & 3rd)</h3>
-              <div className="podiums-table-container">
-                <table className="podiums-table">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Event</th>
-                      <th>Category</th>
-                      <th>Position</th>
-                      <th>Time</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {podiums.map((result, index) => (
-                      <tr key={index}>
-                        <td>{formatDate(result.date)}</td>
-                        <td>{result.event}</td>
-                        <td>{result.category}</td>
-                        <td><span className={getPositionClass(result.position)}>{result.position}</span></td>
-                        <td>{result.time}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  )
+  const handleTabClick = (tab: 'results' | 'performance' | 'championships') => {
+    setActiveTab(tab)
+    if (isMobile) {
+      setShowModal(true)
+    }
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
 
   return (
     <>
@@ -435,44 +371,48 @@ export const RaceDashboard: React.FC = () => {
       <div className="achievements-grid">
         <div 
           className="achievement-card clickable" 
-          onClick={() => setActiveTab('results')}
-          title="Click to view race results"
+          onClick={() => handleTabClick('championships')}
+          title="Click to view championships"
         >
           <div className="achievement-icon">
-            <i className="fas fa-table"></i>
+            <i className="fas fa-trophy"></i>
           </div>
           <div className="achievement-content">
-            <h3>Race Results <i className="fas fa-external-link-alt" style={{ fontSize: '0.7rem', marginLeft: '5px', opacity: 0.7 }}></i></h3>
-            <div className="achievement-number">{raceResults.length}</div>
-            <div className="achievement-description">Recent race performances</div>
-          </div>
-        </div>
-
-        <div className="achievement-card">
-          <div className="achievement-icon">
-            <i className="fas fa-medal"></i>
-          </div>
-          <div className="achievement-content">
-            <h3>Podium Finishes</h3>
-            <div className="achievement-number">{riderData.podium_finishes}</div>
-            <div className="achievement-description">Consistent top-3 results</div>
+            <h3>Championships <i className="fas fa-external-link-alt" style={{ fontSize: '0.7rem', marginLeft: '5px', opacity: 0.7 }}></i></h3>
+            <div className="achievement-number">{riderData.championship_wins}</div>
+            <div className="achievement-description">Championships</div>
           </div>
         </div>
 
         <div 
           className="achievement-card clickable" 
-          onClick={() => setActiveTab('performance')}
-          title="Click to view performance chart"
+          onClick={() => handleTabClick('results')}
+          title="Click to view race results"
+        >
+          <div className="achievement-icon">
+            <i className="fas fa-medal"></i>
+          </div>
+          <div className="achievement-content">
+            <h3>Race Results <i className="fas fa-external-link-alt" style={{ fontSize: '0.7rem', marginLeft: '5px', opacity: 0.7 }}></i></h3>
+            <div className="achievement-number">{riderData.podium_finishes}</div>
+            <div className="achievement-description">Race Results</div>
+          </div>
+        </div>
+
+        <div 
+          className="achievement-card clickable" 
+          onClick={() => handleTabClick('performance')}
+          title="Click to view performance trend"
         >
           <div className="achievement-icon">
             <i className="fas fa-chart-line"></i>
           </div>
           <div className="achievement-content">
             <h3>Performance Trend <i className="fas fa-external-link-alt" style={{ fontSize: '0.7rem', marginLeft: '5px', opacity: 0.7 }}></i></h3>
-            <div className="achievement-trend">
-              <i className="fas fa-arrow-up"></i>
+            <div className="achievement-trend" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <i className="fas fa-arrow-up" style={{ fontSize: '2.5rem', color: '#48bb78' }}></i>
             </div>
-            <div className="achievement-description">{riderData.performance_trend}</div>
+            <div className="achievement-description">Performance Trend</div>
           </div>
         </div>
 
@@ -488,8 +428,8 @@ export const RaceDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Recent Race Results */}
-      {activeTab === 'results' && (
+      {/* Desktop: Show inline content */}
+      {!isMobile && activeTab === 'results' && (
       <div className="race-results-section">
         <h2 className="section-title">Recent Race Results</h2>
         <div className="table-container">
@@ -523,8 +463,8 @@ export const RaceDashboard: React.FC = () => {
     </div>
       )}
 
-      {/* Performance Chart */}
-      {activeTab === 'performance' && (
+      {/* Desktop: Performance Chart */}
+      {!isMobile && activeTab === 'performance' && (
         <div className="performance-chart-section">
           <div className="chart-header">
             <h2>{riderData.name}'s Race Performance Trend</h2>
@@ -532,6 +472,104 @@ export const RaceDashboard: React.FC = () => {
           </div>
           <div className="chart-container">
             <canvas ref={chartRef} style={{ maxHeight: '400px' }}></canvas>
+          </div>
+        </div>
+      )}
+
+      {/* Desktop: Championships Tab */}
+      {!isMobile && activeTab === 'championships' && (
+        <div className="championships-section">
+          <div className="championship-summary">
+            <div className="summary-stats">
+              <div className="summary-stat">
+                <h3>{wins.length}</h3>
+                <p>Total Wins</p>
+              </div>
+              <div className="summary-stat">
+                <h3>{championships.length}</h3>
+                <p>Championships</p>
+              </div>
+              <div className="summary-stat">
+                <h3>{podiums.length}</h3>
+                <p>Podium Finishes</p>
+              </div>
+            </div>
+
+            <div className="wins-section">
+              <h3><i className="fas fa-medal" style={{ color: '#ffd700', marginRight: '8px' }}></i>Race Wins (1st Place)</h3>
+              <div className="table-container">
+                <table className="results-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Event</th>
+                      <th>Category</th>
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {wins.map((race, index) => (
+                      <tr key={index}>
+                        <td>{formatDate(race.date)}</td>
+                        <td>{race.event}</td>
+                        <td>{race.category}</td>
+                        <td>{race.time}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="championships-list">
+              <h3><i className="fas fa-trophy" style={{ color: '#ffd700', marginRight: '8px' }}></i>Championship Titles</h3>
+              <div className="championship-cards">
+                {championships.map((champ, index) => (
+                  <div key={index} className="championship-card">
+                    <div className="championship-icon">
+                      <i className="fas fa-trophy"></i>
+                    </div>
+                    <div className="championship-info">
+                      <h4>{champ.event}</h4>
+                      <p className="championship-category">{champ.category}</p>
+                      <p className="championship-date">{formatDate(champ.date)}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="podiums-section">
+              <h3><i className="fas fa-award" style={{ color: '#c0c0c0', marginRight: '8px' }}></i>Podium Finishes (2nd & 3rd)</h3>
+              <div className="table-container">
+                <table className="results-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Event</th>
+                      <th>Category</th>
+                      <th>Position</th>
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {podiums.map((race, index) => (
+                      <tr key={index}>
+                        <td>{formatDate(race.date)}</td>
+                        <td>{race.event}</td>
+                        <td>{race.category}</td>
+                        <td>
+                          <span className={getPositionClass(race.position)}>
+                            {race.position}
+                          </span>
+                        </td>
+                        <td>{race.time}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -557,8 +595,156 @@ export const RaceDashboard: React.FC = () => {
       </div>
     </div>
 
-    {/* Championship Modal */}
-    {showChampionshipModal && createPortal(<ChampionshipModal />, document.body)}
+    {/* Mobile Modal */}
+    {isMobile && showModal && createPortal(
+      <div className="race-dashboard-container modal" onClick={closeModal}>
+        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-header">
+            <h2>
+              {activeTab === 'results' && 'Race Results'}
+              {activeTab === 'performance' && 'Performance Trend'}
+              {activeTab === 'championships' && 'Championships'}
+            </h2>
+            <span className="close-modal" onClick={closeModal}>&times;</span>
+          </div>
+          <div className="modal-body">
+            {activeTab === 'results' && (
+              <div className="table-container">
+                <table className="results-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Event</th>
+                      <th>Category</th>
+                      <th>Position</th>
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {raceResults.map((result, index) => (
+                      <tr key={index}>
+                        <td>{formatDate(result.date)}</td>
+                        <td>{result.event}</td>
+                        <td>{result.category}</td>
+                        <td>
+                          <span className={getPositionClass(result.position)}>
+                            {result.position}
+                          </span>
+                        </td>
+                        <td>{result.time}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {activeTab === 'performance' && (
+              <div className="chart-container">
+                <canvas ref={chartRef} style={{ maxHeight: '400px' }}></canvas>
+              </div>
+            )}
+
+            {activeTab === 'championships' && (
+              <div className="championship-summary">
+                <div className="summary-stats">
+                  <div className="summary-stat">
+                    <h3>{wins.length}</h3>
+                    <p>Total Wins</p>
+                  </div>
+                  <div className="summary-stat">
+                    <h3>{championships.length}</h3>
+                    <p>Championships</p>
+                  </div>
+                  <div className="summary-stat">
+                    <h3>{podiums.length}</h3>
+                    <p>Podium Finishes</p>
+                  </div>
+                </div>
+
+                <div className="wins-section">
+                  <h3><i className="fas fa-medal" style={{ color: '#ffd700', marginRight: '8px' }}></i>Race Wins (1st Place)</h3>
+                  <div className="table-container">
+                    <table className="results-table">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Event</th>
+                          <th>Category</th>
+                          <th>Time</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {wins.map((race, index) => (
+                          <tr key={index}>
+                            <td>{formatDate(race.date)}</td>
+                            <td>{race.event}</td>
+                            <td>{race.category}</td>
+                            <td>{race.time}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div className="championships-list">
+                  <h3><i className="fas fa-trophy" style={{ color: '#ffd700', marginRight: '8px' }}></i>Championship Titles</h3>
+                  <div className="championship-cards">
+                    {championships.map((champ, index) => (
+                      <div key={index} className="championship-card">
+                        <div className="championship-icon">
+                          <i className="fas fa-trophy"></i>
+                        </div>
+                        <div className="championship-info">
+                          <h4>{champ.event}</h4>
+                          <p className="championship-category">{champ.category}</p>
+                          <p className="championship-date">{formatDate(champ.date)}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="podiums-section">
+                  <h3><i className="fas fa-award" style={{ color: '#c0c0c0', marginRight: '8px' }}></i>Podium Finishes (2nd & 3rd)</h3>
+                  <div className="table-container">
+                    <table className="results-table">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Event</th>
+                          <th>Category</th>
+                          <th>Position</th>
+                          <th>Time</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {podiums.map((race, index) => (
+                          <tr key={index}>
+                            <td>{formatDate(race.date)}</td>
+                            <td>{race.event}</td>
+                            <td>{race.category}</td>
+                            <td>
+                              <span className={getPositionClass(race.position)}>
+                                {race.position}
+                              </span>
+                            </td>
+                            <td>{race.time}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>,
+      document.body
+    )}
+
     </>
   )
 }
