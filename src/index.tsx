@@ -1,9 +1,51 @@
 import { createRoot } from 'react-dom/client'
 import React from 'react'
+import { RaceDashboard } from './components/RaceDashboard'
 
 const App = () => {
   return (
     <div>
+      {/* Navigation */}
+      <nav className="navbar">
+        <div className="nav-container">
+          <div className="nav-menu-trigger" id="nav-logo-trigger">
+            <span className="menu-text">MENU</span>
+            <div className="menu-icon">
+              <span className="menu-bar"></span>
+              <span className="menu-bar"></span>
+              <span className="menu-bar"></span>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Side Menu */}
+      <div className="side-menu" id="side-menu">
+        <div className="side-menu-header">
+          <h2>Menu</h2>
+          <button className="side-menu-close" id="side-menu-close" aria-label="Close menu">
+            <span>&times;</span>
+          </button>
+        </div>
+        <ul className="side-menu-list">
+          <li><a href="#about" className="side-menu-link">About</a></li>
+          <li><a href="#sponsors" className="side-menu-link">Sponsors</a></li>
+          <li><a href="#achievements" className="side-menu-link">Achievements</a></li>
+          <li><a href="#race-performance" className="side-menu-link">Performance</a></li>
+          <li><a href="#latest-blog" className="side-menu-link">Latest Blog</a></li>
+          <li><a href="#experience" className="side-menu-link">Experience</a></li>
+          <li><a href="#youtube-videos" className="side-menu-link">Videos</a></li>
+          <li><a href="#cycling-gallery" className="side-menu-link">Gallery</a></li>
+          <li><a href="#social-media" className="side-menu-link">Social Media</a></li>
+          <li><a href="#contact" className="side-menu-link">Contact</a></li>
+        </ul>
+        <div className="side-menu-footer">
+          <p>🚴‍♂️ BullRider</p>
+          <p className="side-menu-tagline">Mael Massoutie - Professional Cyclist</p>
+        </div>
+      </div>
+      <div className="side-menu-overlay" id="side-menu-overlay"></div>
+
       <section className="hero">
         <div className="hero-content">
           <h1 className="hero-title">Mael Massoutie</h1>
@@ -185,134 +227,7 @@ const App = () => {
         <div className="container">
           <h2 className="centered-title">Race Performance</h2>
           <p>Real-time racing data and performance analytics</p>
-          
-          <div className="performance-dashboard">
-            <div className="performance-header">
-              <div className="rider-info">
-                <h3>Mael MASSOUTIE BOVER</h3>
-                <div className="rider-details">
-                  <span className="category">Elite • Enduro</span>
-                  <span className="location">Girona, Spain</span>
-                </div>
-              </div>
-            </div>
-            <div className="performance-stats">
-              <div className="stat-item">
-                <span className="stat-label">Season Rank</span>
-                <span className="stat-value">#1</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-label">Points</span>
-                <span className="stat-value">485</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-label">Win Rate</span>
-                <span className="stat-value">78%</span>
-              </div>
-            </div>
-            
-            <div className="performance-grid">
-              <div className="performance-card">
-                <div className="card-icon">🏆</div>
-                <div className="card-content">
-                  <h4>Championship Wins</h4>
-                  <div className="card-value">5</div>
-                  <p>Copa de España & Catalunya</p>
-                </div>
-              </div>
-              
-              <div className="performance-card">
-                <div className="card-icon">🥇</div>
-                <div className="card-content">
-                  <h4>Podium Finishes</h4>
-                  <div className="card-value">12+</div>
-                  <p>Consistent top-3 results</p>
-                </div>
-              </div>
-              
-              <div className="performance-card">
-                <div className="card-icon">📈</div>
-                <div className="card-content">
-                  <h4>Performance Trend</h4>
-                  <div className="card-value">↗️</div>
-                  <p>Continuously improving</p>
-                </div>
-              </div>
-              
-              <div className="performance-card">
-                <div className="card-icon">⚡</div>
-                <div className="card-content">
-                  <h4>Elite Level</h4>
-                  <div className="card-value">Scratch</div>
-                  <p>Competing with pros</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="recent-results">
-              <h4>Recent Race Results</h4>
-              <div className="results-table">
-                <div className="result-header">
-                  <span>Date</span>
-                  <span>Event</span>
-                  <span>Category</span>
-                  <span>Position</span>
-                  <span>Time</span>
-                </div>
-                
-                <div className="result-row">
-                  <span>08 Sept 2024</span>
-                  <span>Copa de Catalunya Enduro</span>
-                  <span>Elite</span>
-                  <span className="position-1">1st</span>
-                  <span>2:45:32</span>
-                </div>
-                
-                <div className="result-row">
-                  <span>24 March 2024</span>
-                  <span>Copa de España Enduro</span>
-                  <span>Elite</span>
-                  <span className="position-1">1st</span>
-                  <span>3:12:18</span>
-                </div>
-                
-                <div className="result-row">
-                  <span>15 March 2024</span>
-                  <span>Campeonato Catalunya</span>
-                  <span>Elite</span>
-                  <span className="position-3">3rd</span>
-                  <span>2:58:44</span>
-                </div>
-                
-                <div className="result-row">
-                  <span>20 Feb 2024</span>
-                  <span>Copa Catalunya Enduro</span>
-                  <span>Elite</span>
-                  <span className="position-1">1st</span>
-                  <span>2:41:09</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="performance-stats">
-              <div className="stat-item">
-                <span className="stat-label">Avg. Finish Position</span>
-                <span className="stat-value">1.8</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-label">Best Lap Time</span>
-                <span className="stat-value">2:41:09</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-label">Races Completed</span>
-                <span className="stat-value">25+</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-label">Championship Points</span>
-                <span className="stat-value">485</span>
-              </div>
-            </div>
-          </div>
+          <RaceDashboard />
         </div>
       </section>
 
@@ -390,7 +305,7 @@ const App = () => {
 
       <section id="youtube-videos" className="youtube-videos">
         <div className="container">
-          <h2>🎥 Latest Videos from @manelic.1</h2>
+          <h2> Latest Videos from @manelic.1</h2>
           <p>Best moments riding bikes, exploring mountains, and championship racing</p>
           <div className="videos-grid">
             <div className="video-item featured">
@@ -444,7 +359,7 @@ const App = () => {
           </div>
           
           <div className="shorts-section">
-            <h3>🔥 Popular YouTube Shorts</h3>
+            <h3> Popular YouTube Shorts</h3>
             <div className="shorts-grid">
               <div className="short-item">
                 <div className="short-thumbnail">

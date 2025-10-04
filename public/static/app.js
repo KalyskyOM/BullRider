@@ -3,40 +3,104 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // === NAVIGATION FUNCTIONALITY ===
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
+    // === SIDE MENU FUNCTIONALITY ===
+    const navLogoTrigger = document.getElementById('nav-logo-trigger');
+    const sideMenu = document.getElementById('side-menu');
+    const sideMenuClose = document.getElementById('side-menu-close');
+    const sideMenuOverlay = document.getElementById('side-menu-overlay');
+    const sideMenuLinks = document.querySelectorAll('.side-menu-link');
 
-    // Mobile menu toggle
-    hamburger?.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu?.classList.toggle('active');
+    // Open side menu when clicking logo
+    navLogoTrigger?.addEventListener('click', () => {
+        sideMenu?.classList.add('active');
+        sideMenuOverlay?.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
     });
 
-    // Close mobile menu when clicking on a link
-    navLinks.forEach(link => {
+    // Close side menu function
+    const closeSideMenu = () => {
+        sideMenu?.classList.remove('active');
+        sideMenuOverlay?.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    };
+
+    // Close side menu when clicking close button
+    sideMenuClose?.addEventListener('click', closeSideMenu);
+
+    // Close side menu when clicking overlay
+    sideMenuOverlay?.addEventListener('click', closeSideMenu);
+
+    // Close side menu when clicking on a link
+    sideMenuLinks.forEach(link => {
         link.addEventListener('click', () => {
-            navMenu?.classList.remove('active');
+            closeSideMenu();
         });
+    });
+
+    // Close side menu with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sideMenu?.classList.contains('active')) {
+            closeSideMenu();
+        }
+    });
+
+    // Prevent body scroll when side menu is open (mobile fix)
+    let scrollPosition = 0;
+    const preventBodyScroll = () => {
+        scrollPosition = window.pageYOffset;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.style.width = '100%';
+    };
+    
+    const restoreBodyScroll = () => {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, scrollPosition);
+    };
+
+    // Update open/close functions for mobile
+    const originalOpen = navLogoTrigger?.onclick;
+    navLogoTrigger?.addEventListener('click', () => {
+        preventBodyScroll();
+    });
+
+    const originalCloseSideMenu = closeSideMenu;
+    const closeSideMenuMobile = () => {
+        originalCloseSideMenu();
+        restoreBodyScroll();
+    };
+
+    // Update all close triggers
+    sideMenuClose?.removeEventListener('click', closeSideMenu);
+    sideMenuClose?.addEventListener('click', closeSideMenuMobile);
+    
+    sideMenuOverlay?.removeEventListener('click', closeSideMenu);
+    sideMenuOverlay?.addEventListener('click', closeSideMenuMobile);
+    
+    sideMenuLinks.forEach(link => {
+        link.removeEventListener('click', closeSideMenu);
+        link.addEventListener('click', closeSideMenuMobile);
     });
 
     // === SMOOTH SCROLLING ===
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-      
-      if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
+    const allNavLinks = document.querySelectorAll('.side-menu-link');
+    allNavLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
         });
-      }
     });
-  });
 
   // === NAVBAR SCROLL EFFECT ===
   const navbar = document.querySelector('.navbar');
@@ -280,49 +344,247 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // === EASTER EGG - CYCLING SOUND EFFECTS ===
+    // === EASTER EGG - CYCLING ANIMATION ===
     let clickCount = 0;
-    const heroTitle = document.querySelector('.hero-title');
+    const cyclingAnimation = document.querySelector('.cycling-animation');
     
-    if (heroTitle) {
-        heroTitle.addEventListener('click', () => {
+    // Add subtle hover hint for discoverability
+    if (cyclingAnimation) {
+        // Add hover effect styles
+        if (!document.querySelector('#easter-egg-hint-styles')) {
+            const hintStyles = document.createElement('style');
+            hintStyles.id = 'easter-egg-hint-styles';
+            hintStyles.textContent = `
+                .cycling-animation {
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    position: relative;
+                }
+                .cycling-animation:hover {
+                    transform: scale(1.05);
+                    filter: brightness(1.2) drop-shadow(0 0 20px rgba(93, 173, 226, 0.6));
+                }
+            `;
+            document.head.appendChild(hintStyles);
+        }
+        
+        cyclingAnimation.addEventListener('click', () => {
             clickCount++;
             
+            // Visual feedback for each click with pulse effect
+            cyclingAnimation.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                cyclingAnimation.style.transform = '';
+            }, 100);
+            
             if (clickCount === 5) {
-                // Create cycling sound effect (visual representation)
-                const soundEffect = document.createElement('div');
-                soundEffect.textContent = '🚴‍♂️💨 WHOOSH!';
-                soundEffect.style.cssText = `
+                // Create cycling animation effect
+                const cyclingAnimation = document.createElement('div');
+                cyclingAnimation.innerHTML = '🚴‍♂️💨';
+                cyclingAnimation.style.cssText = `
                     position: fixed;
+                    left: -100px;
                     top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    font-size: 3rem;
+                    transform: translateY(-50%);
+                    font-size: 4rem;
                     z-index: 10000;
-                    animation: whoosh 2s ease-out forwards;
+                    animation: cycleAcross 3s ease-in-out forwards;
                 `;
                 
-                // Add animation keyframes
-                if (!document.querySelector('#whoosh-animation')) {
+                // Add cycling animation keyframes
+                if (!document.querySelector('#cycling-animation')) {
                     const style = document.createElement('style');
-                    style.id = 'whoosh-animation';
+                    style.id = 'cycling-animation';
                     style.textContent = `
-                        @keyframes whoosh {
-                            0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
-                            50% { transform: translate(-50%, -50%) scale(1.2) rotate(180deg); opacity: 0.8; }
-                            100% { transform: translate(-50%, -50%) scale(0) rotate(360deg); opacity: 0; }
+                        @keyframes cycleAcross {
+                            0% { 
+                                left: -100px; 
+                                transform: translateY(-50%) rotate(0deg) scale(1);
+                                opacity: 1;
+                            }
+                            20% { 
+                                transform: translateY(-50%) rotate(10deg) scale(1.2);
+                            }
+                            40% { 
+                                transform: translateY(-50%) rotate(-10deg) scale(1.2);
+                            }
+                            60% { 
+                                transform: translateY(-50%) rotate(10deg) scale(1.2);
+                            }
+                            80% { 
+                                transform: translateY(-50%) rotate(-10deg) scale(1.2);
+                            }
+                            100% { 
+                                left: calc(100% + 100px); 
+                                transform: translateY(-50%) rotate(0deg) scale(1);
+                                opacity: 1;
+                            }
+                        }
+                        @keyframes wheelSpin {
+                            from { transform: rotate(0deg); }
+                            to { transform: rotate(1080deg); }
                         }
                     `;
                     document.head.appendChild(style);
                 }
                 
-                document.body.appendChild(soundEffect);
-                setTimeout(() => soundEffect.remove(), 2000);
+                document.body.appendChild(cyclingAnimation);
+                setTimeout(() => cyclingAnimation.remove(), 3000);
                 
-                showNotification('🏆 You found the BullRider secret! Mael appreciates curious visitors!', 'success');
+                // Add trail effect
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const trail = document.createElement('div');
+                        trail.textContent = '💨';
+                        trail.style.cssText = `
+                            position: fixed;
+                            left: ${i * 15}%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            font-size: 2rem;
+                            z-index: 9999;
+                            opacity: 0.6;
+                            animation: fadeOut 1s ease-out forwards;
+                        `;
+                        
+                        if (!document.querySelector('#trail-animation')) {
+                            const trailStyle = document.createElement('style');
+                            trailStyle.id = 'trail-animation';
+                            trailStyle.textContent = `
+                                @keyframes fadeOut {
+                                    to { opacity: 0; transform: translateY(-50%) scale(0.5); }
+                                }
+                            `;
+                            document.head.appendChild(trailStyle);
+                        }
+                        
+                        document.body.appendChild(trail);
+                        setTimeout(() => trail.remove(), 1000);
+                    }, i * 200);
+                }
+                
+                // Full page celebration animation after 1 second
+                setTimeout(() => {
+                    createFullPageCelebration();
+                }, 1000);
+                
                 clickCount = 0;
             }
         });
+    }
+
+    // === FULL PAGE CELEBRATION ANIMATION ===
+    function createFullPageCelebration() {
+        // Create full-page overlay
+        const overlay = document.createElement('div');
+        overlay.id = 'celebration-overlay';
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2c3e50, #34495e, #5dade2);
+            z-index: 999999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: overlayFadeIn 0.5s ease-out;
+        `;
+        
+        // Create celebration content
+        const celebrationContent = document.createElement('div');
+        celebrationContent.style.cssText = `
+            text-align: center;
+            color: white;
+            animation: celebrationBounce 1s ease-out;
+        `;
+        
+        celebrationContent.innerHTML = `
+            <div style="font-size: 6rem; margin-bottom: 2rem; animation: trophySpin 2s ease-in-out infinite;">
+                🏆
+            </div>
+            <h1 style="font-size: 3rem; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif; text-shadow: 0 0 30px rgba(255,255,255,0.5);">
+                BullRider Secret Unlocked!
+            </h1>
+            <p style="font-size: 1.5rem; margin-bottom: 2rem; opacity: 0.9;">
+                Mael appreciates curious visitors! 🚴‍♂️💨
+            </p>
+            <div style="font-size: 4rem; animation: cyclistRide 2s linear infinite;">
+                🚴‍♂️ 🚴‍♂️ 🚴‍♂️
+            </div>
+        `;
+        
+        overlay.appendChild(celebrationContent);
+        
+        // Create confetti effect
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            const emojis = ['🎉', '🎊', '⭐', '✨', '🏆', '🚴‍♂️', '💨', '🔥'];
+            confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            confetti.style.cssText = `
+                position: absolute;
+                top: -50px;
+                left: ${Math.random() * 100}%;
+                font-size: ${Math.random() * 2 + 1}rem;
+                animation: confettiFall ${Math.random() * 3 + 2}s linear infinite;
+                animation-delay: ${Math.random() * 2}s;
+                opacity: ${Math.random() * 0.5 + 0.5};
+            `;
+            overlay.appendChild(confetti);
+        }
+        
+        // Add animation styles
+        if (!document.querySelector('#celebration-styles')) {
+            const celebrationStyles = document.createElement('style');
+            celebrationStyles.id = 'celebration-styles';
+            celebrationStyles.textContent = `
+                @keyframes overlayFadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                @keyframes overlayFadeOut {
+                    from { opacity: 1; }
+                    to { opacity: 0; }
+                }
+                @keyframes celebrationBounce {
+                    0%, 100% { transform: scale(1); }
+                    25% { transform: scale(0.9); }
+                    50% { transform: scale(1.1); }
+                    75% { transform: scale(0.95); }
+                }
+                @keyframes trophySpin {
+                    0%, 100% { transform: rotate(-10deg) scale(1); }
+                    50% { transform: rotate(10deg) scale(1.2); }
+                }
+                @keyframes cyclistRide {
+                    0% { transform: translateX(-50px); }
+                    100% { transform: translateX(50px); }
+                }
+                @keyframes confettiFall {
+                    0% { 
+                        transform: translateY(0) rotate(0deg); 
+                        opacity: 1;
+                    }
+                    100% { 
+                        transform: translateY(100vh) rotate(360deg); 
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(celebrationStyles);
+        }
+        
+        document.body.appendChild(overlay);
+        
+        // Fade out and remove after 4 seconds
+        setTimeout(() => {
+            overlay.style.animation = 'overlayFadeOut 0.5s ease-out';
+            setTimeout(() => {
+                overlay.remove();
+            }, 500);
+        }, 4000);
     }
 
     // === LAZY LOADING FOR IMAGES ===
