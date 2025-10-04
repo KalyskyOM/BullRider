@@ -1,8 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import React from 'react'
 import { RaceDashboard } from './components/RaceDashboard'
-import { YouTubeVideos } from './components/YouTubeVideos'
-import { HeroStats } from './components/HeroStats'
 
 const App = () => {
   return (
@@ -52,7 +50,20 @@ const App = () => {
         <div className="hero-content">
           <h1 className="hero-title">Mael Massoutie</h1>
           <p className="hero-subtitle">Professional Cyclist • Champion • BullRider</p>
-          <HeroStats />
+          <div className="hero-stats">
+            <div className="stat">
+              <span className="stat-number">7</span>
+              <span className="stat-label">YouTube Videos</span>
+            </div>
+            <div className="stat">
+              <span className="stat-number">3.4K+</span>
+              <span className="stat-label">Total Views</span>
+            </div>
+            <div className="stat">
+              <span className="stat-number">Multiple</span>
+              <span className="stat-label">Championships</span>
+            </div>
+          </div>
           <div className="hero-actions">
             <a href="#youtube-videos" className="btn-primary">Watch Videos</a>
             <a href="https://www.youtube.com/@manelic.1" target="_blank" rel="noopener" className="btn-secondary">
@@ -302,7 +313,89 @@ const App = () => {
         </div>
       </section>
 
-      <YouTubeVideos />
+      <section id="youtube-videos" className="youtube-videos">
+        <div className="container">
+          <h2>Latest Videos from @manelic.1</h2>
+          <p>Best moments riding bikes, exploring mountains, and championship racing</p>
+          <div className="videos-grid">
+            <div className="video-item featured">
+              <div className="video-thumbnail" data-video="FzXGJtFSG84">
+                <img src="https://i.ytimg.com/vi/FzXGJtFSG84/maxresdefault.jpg" alt="European Championship POV" />
+                <div className="play-button">▶</div>
+                <div className="video-overlay">
+                  <h3>POV European Championship Downhill Track</h3>
+                  <div className="video-stats">
+                    <span>3:22</span> • <span>84 views</span> • <span>1 month ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="video-item">
+              <div className="video-thumbnail" data-video="catalunya-run">
+                <img src="https://cloudfront-us-east-2.images.arcpublishing.com/reuters/QV2KNNY3UJJUDLI57LDFXOMTHY.jpg" alt="Full Run Catalunya" />
+                <div className="play-button">▶</div>
+                <div className="video-overlay">
+                  <h3>Full Run POV La Catalunya</h3>
+                  <div className="video-stats">
+                    <span>3:35</span> • <span>19 views</span> • <span>1 month ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="video-item">
+              <div className="video-thumbnail" data-video="vallnord">
+                <img src="https://bikerumor.com/wp-content/uploads/2023/06/2023-lenzerheide-world-cup-dh-rachel-atherton-finals-run.jpg" alt="Vallnord Commencal" />
+                <div className="play-button">▶</div>
+                <div className="video-overlay">
+                  <h3>Vallnord Commencal</h3>
+                  <div className="video-stats">
+                    <span>0:39</span> • <span>147 views</span> • <span>3 years ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="shorts-section">
+            <h3>Popular YouTube Shorts</h3>
+            <div className="shorts-grid">
+              <div className="short-item">
+                <div className="short-thumbnail">
+                  <img src="https://images.singletracks.com/blog/wp-content/uploads/2021/07/0e2d6f45-1e20-4e93-9cf6-78f414da08e5-750x500.jpg" alt="Bike Stand DIY" />
+                  <div className="short-badge">Shorts</div>
+                </div>
+                <h4>DIY Bike Stand Build</h4>
+                <p>1.3K views</p>
+              </div>
+              <div className="short-item">
+                <div className="short-thumbnail">
+                  <img src="https://assets.ucimtbworldseries.com/content/contentUploads/TFVp2u1tW9RHw3yWkLpQSmUO4jeeZRCyuY7v9yOb.jpg" alt="European Championship Training" />
+                  <div className="short-badge">Shorts</div>
+                </div>
+                <h4>European Championship Training</h4>
+                <p>1K views</p>
+              </div>
+              <div className="short-item">
+                <div className="short-thumbnail">
+                  <img src="https://ep1.pinkbike.org/p5pb9592724/p5pb9592724.jpg" alt="First Day DH Bike" />
+                  <div className="short-badge">Shorts</div>
+                </div>
+                <h4>First Day with DH Bike</h4>
+                <p>1.1K views</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="channel-cta">
+            <h3>Subscribe for More Cycling Content!</h3>
+            <p>"Best moments riding bikes. Being, exploring and enjoying the mountains. Best moments with the homies."</p>
+            <a href="https://www.youtube.com/@manelic.1" target="_blank" rel="noopener" className="btn-youtube">
+              <i className="fab fa-youtube"></i>
+              Subscribe to @manelic.1
+            </a>
+          </div>
+        </div>
+      </section>
 
       <section id="cycling-gallery" className="cycling-gallery">
         <div className="container">
