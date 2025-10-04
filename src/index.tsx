@@ -331,18 +331,6 @@ const App = () => {
               </div>
             </div>
             <div className="video-item">
-              <div className="video-thumbnail" data-video="bernex-blue">
-                <img src="https://images.singletracks.com/blog/wp-content/uploads/2025/09/sitewrap_702926_right_1170.jpg" alt="Bernex Blue Line" />
-                <div className="play-button">▶</div>
-                <div className="video-overlay">
-                  <h3>BERNEX Blue Line</h3>
-                  <div className="video-stats">
-                    <span>2:25</span> • <span>40 views</span> • <span>1 month ago</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="video-item">
               <div className="video-thumbnail" data-video="catalunya-run">
                 <img src="https://cloudfront-us-east-2.images.arcpublishing.com/reuters/QV2KNNY3UJJUDLI57LDFXOMTHY.jpg" alt="Full Run Catalunya" />
                 <div className="play-button">▶</div>
@@ -433,14 +421,6 @@ const App = () => {
             <div className="gallery-item">
               <div className="gallery-image">
                 <div className="gallery-overlay">
-                  <h3 className="gallery-title">Bernex Trails</h3>
-                  <p className="gallery-description">Exploring the famous Bernex blue line trails</p>
-                </div>
-              </div>
-            </div>
-            <div className="gallery-item">
-              <div className="gallery-image">
-                <div className="gallery-overlay">
                   <h3 className="gallery-title">Catalunya Racing</h3>
                   <p className="gallery-description">Full runs through Catalunya's technical courses</p>
                 </div>
@@ -451,14 +431,6 @@ const App = () => {
                 <div className="gallery-overlay">
                   <h3 className="gallery-title">Training Sessions</h3>
                   <p className="gallery-description">Daily training building championship-level skills</p>
-                </div>
-              </div>
-            </div>
-            <div className="gallery-item">
-              <div className="gallery-image">
-                <div className="gallery-overlay">
-                  <h3 className="gallery-title">Vallnord Adventures</h3>
-                  <p className="gallery-description">Riding with Commencal bikes in Vallnord</p>
                 </div>
               </div>
             </div>

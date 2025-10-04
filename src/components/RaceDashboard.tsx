@@ -331,7 +331,10 @@ export const RaceDashboard: React.FC = () => {
   const podiums = raceResults.filter(r => r.position === '2nd' || r.position === '3rd')
   const championships = raceResults.filter(r => r.event.toLowerCase().includes('champion'))
 
-  const handleTabClick = (tab: 'results' | 'performance' | 'championships') => {
+  const handleTabClick = (tab: 'results' | 'performance' | 'championships', e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation()
+    }
     setActiveTab(tab)
     if (isMobile) {
       setShowModal(true)
@@ -371,7 +374,7 @@ export const RaceDashboard: React.FC = () => {
       <div className="achievements-grid">
         <div 
           className="achievement-card clickable" 
-          onClick={() => handleTabClick('championships')}
+          onClick={(e) => handleTabClick('championships', e)}
           title="Click to view championships"
         >
           <div className="achievement-icon">
@@ -386,7 +389,7 @@ export const RaceDashboard: React.FC = () => {
 
         <div 
           className="achievement-card clickable" 
-          onClick={() => handleTabClick('results')}
+          onClick={(e) => handleTabClick('results', e)}
           title="Click to view race results"
         >
           <div className="achievement-icon">
@@ -401,7 +404,7 @@ export const RaceDashboard: React.FC = () => {
 
         <div 
           className="achievement-card clickable" 
-          onClick={() => handleTabClick('performance')}
+          onClick={(e) => handleTabClick('performance', e)}
           title="Click to view performance trend"
         >
           <div className="achievement-icon">
