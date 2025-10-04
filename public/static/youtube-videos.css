@@ -22,7 +22,7 @@
 /* Videos Grid */
 .videos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-bottom: 4rem;
 }
@@ -40,6 +40,7 @@
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
+/* First video takes full width (2 columns) */
 .video-item.featured {
   grid-column: span 2;
 }
