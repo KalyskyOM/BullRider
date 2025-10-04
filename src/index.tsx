@@ -106,6 +106,16 @@ const App = () => {
                 <span>Wheels • Pedals • Components</span>
               </div>
             </a>
+
+            <a className="sponsor-card" href="https://bttfornells.org/" target="_blank" rel="noopener noreferrer" aria-label="BTT Fornells">
+              <div className="sponsor-logo-wrap">
+                <img className="sponsor-logo" alt="BTT Fornells Logo" src="/static/btt-fornells-logo.png" />
+              </div>
+              <div className="sponsor-meta">
+                <h3>BTT Fornells</h3>
+                <span>Mountain Bike Club • Training & Community</span>
+              </div>
+            </a>
           </div>
 
           <div className="sponsors-cta">
