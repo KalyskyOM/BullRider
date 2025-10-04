@@ -122,7 +122,7 @@ const defaultRaceResults: RaceResult[] = [
 export const RaceDashboard: React.FC = () => {
   const [riderData, setRiderData] = useState<RiderData>(defaultRider)
   const [raceResults, setRaceResults] = useState<RaceResult[]>(defaultRaceResults)
-  const [showPerformanceModal, setShowPerformanceModal] = useState(false)
+  const [activeTab, setActiveTab] = useState<'results' | 'performance'>('results')
   const [showChampionshipModal, setShowChampionshipModal] = useState(false)
   const chartRef = useRef<HTMLCanvasElement>(null)
   const chartInstance = useRef<Chart | null>(null)
@@ -132,7 +132,7 @@ export const RaceDashboard: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    if (showPerformanceModal && chartRef.current) {
+    if (activeTab === 'performance' && chartRef.current) {
       createPerformanceChart()
     }
     return () => {
@@ -141,7 +141,7 @@ export const RaceDashboard: React.FC = () => {
         chartInstance.current = null
       }
     }
-  }, [showPerformanceModal])
+  }, [activeTab])
 
   const loadData = async () => {
     try {
@@ -178,23 +178,49 @@ export const RaceDashboard: React.FC = () => {
     chartInstance.current = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['Race 1', 'Race 2', 'Race 3', 'Race 4', 'Race 5', 'Race 6'],
+        labels: [
+          'Copa Catalunya Enduro',
+          'V En Estinnes Malux',
+          'XXXI GranPrix Maxxis',
+          'Campeonato Catalunya',
+          'Copa España Enduro',
+          'Super Enduro Arfa',
+          'Montefaro Enduro',
+          'Reino de los Mallos',
+          'EnduBítem 7è',
+          'Monte Castelo Burela',
+          'Gavarres Gravity',
+          'Mordoride DH',
+          'Copa España DH'
+        ],
         datasets: [
           {
-            label: '% from Category Winner',
-            data: [95, 97, 100, 98, 100, 100],
-            borderColor: '#ffd700',
-            backgroundColor: 'rgba(255, 215, 0, 0.1)',
-            tension: 0.4,
-            fill: true
-          },
-          {
-            label: '% from Fastest Male',
-            data: [88, 90, 92, 91, 94, 95],
+            label: '% from category winner',
+            data: [0, 18, 12, 8, 0, 14, 0, 1.2, 0, 0, 0, 16, 8],
             borderColor: '#48bb78',
             backgroundColor: 'rgba(72, 187, 120, 0.1)',
+            borderWidth: 3,
+            fill: false,
             tension: 0.4,
-            fill: true
+            pointRadius: 6,
+            pointHoverRadius: 8,
+            pointBackgroundColor: '#48bb78',
+            pointBorderColor: '#ffffff',
+            pointBorderWidth: 2
+          },
+          {
+            label: '% from fastest male',
+            data: [0, 21, 15, 12, 0, 18, 0, 3.5, 0, 0, 0, 20, 12],
+            borderColor: '#d69e2e',
+            backgroundColor: 'rgba(214, 158, 46, 0.1)',
+            borderWidth: 3,
+            fill: false,
+            tension: 0.4,
+            pointRadius: 6,
+            pointHoverRadius: 8,
+            pointBackgroundColor: '#d69e2e',
+            pointBorderColor: '#ffffff',
+            pointBorderWidth: 2
           }
         ]
       },
@@ -203,29 +229,75 @@ export const RaceDashboard: React.FC = () => {
         maintainAspectRatio: false,
         plugins: {
           legend: {
+            position: 'top',
+            align: 'end',
             labels: {
               color: '#e2e8f0',
-              font: { size: 14 }
+              font: {
+                family: 'Inter',
+                size: 12,
+                weight: 500
+              },
+              usePointStyle: true,
+              pointStyle: 'circle',
+              padding: 20
             }
           },
           tooltip: {
-            backgroundColor: 'rgba(26, 32, 44, 0.95)',
-            titleColor: '#e2e8f0',
+            mode: 'index',
+            intersect: false,
+            backgroundColor: 'rgba(26, 32, 44, 0.9)',
+            titleColor: '#ffffff',
             bodyColor: '#e2e8f0',
             borderColor: 'rgba(255, 255, 255, 0.1)',
-            borderWidth: 1
+            borderWidth: 1,
+            cornerRadius: 8,
+            displayColors: true,
+            callbacks: {
+              label: function(context: any) {
+                return context.dataset.label + ': ' + context.parsed.y + '%'
+              }
+            }
           }
         },
         scales: {
+          x: {
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            ticks: {
+              color: '#a0aec0',
+              font: {
+                size: 11
+              },
+              maxRotation: 45,
+              minRotation: 45
+            }
+          },
           y: {
             beginAtZero: true,
-            max: 100,
-            ticks: { color: '#a0aec0' },
-            grid: { color: 'rgba(255, 255, 255, 0.1)' }
-          },
-          x: {
-            ticks: { color: '#a0aec0' },
-            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+            max: 25,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            ticks: {
+              color: '#a0aec0',
+              font: {
+                size: 12
+              },
+              callback: function(value: any) {
+                return value + '%'
+              }
+            },
+            title: {
+              display: true,
+              text: 'Performance Gap (%)',
+              color: '#e2e8f0',
+              font: {
+                size: 13,
+                weight: 600
+              }
+            }
           }
         }
       }
@@ -247,23 +319,6 @@ export const RaceDashboard: React.FC = () => {
   const wins = raceResults.filter(r => r.position === '1st')
   const podiums = raceResults.filter(r => r.position === '2nd' || r.position === '3rd')
   const championships = raceResults.filter(r => r.event.toLowerCase().includes('champion'))
-
-  const PerformanceModal = () => (
-    <div className="race-dashboard-container modal" onClick={() => setShowPerformanceModal(false)}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
-          <h2>Mael's Race Performance</h2>
-          <p className="modal-subtitle">Tip: Click the chart legend to toggle each data series</p>
-          <span className="close-modal" onClick={() => setShowPerformanceModal(false)}>&times;</span>
-        </div>
-        <div className="modal-body">
-          <div className="chart-container">
-            <canvas ref={chartRef} style={{ height: '400px' }}></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
 
   const ChampionshipModal = () => (
     <div className="race-dashboard-container modal" onClick={() => setShowChampionshipModal(false)}>
@@ -380,16 +435,16 @@ export const RaceDashboard: React.FC = () => {
       <div className="achievements-grid">
         <div 
           className="achievement-card clickable" 
-          onClick={() => setShowChampionshipModal(true)}
-          title="Click to view championship wins and race victories"
+          onClick={() => setActiveTab('results')}
+          title="Click to view race results"
         >
           <div className="achievement-icon">
-            <i className="fas fa-trophy"></i>
+            <i className="fas fa-table"></i>
           </div>
           <div className="achievement-content">
-            <h3>Championship Wins <i className="fas fa-external-link-alt" style={{ fontSize: '0.7rem', marginLeft: '5px', opacity: 0.7 }}></i></h3>
-            <div className="achievement-number">{riderData.championship_wins}</div>
-            <div className="achievement-description">Copa de España & Catalunya</div>
+            <h3>Race Results <i className="fas fa-external-link-alt" style={{ fontSize: '0.7rem', marginLeft: '5px', opacity: 0.7 }}></i></h3>
+            <div className="achievement-number">{raceResults.length}</div>
+            <div className="achievement-description">Recent race performances</div>
           </div>
         </div>
 
@@ -406,7 +461,7 @@ export const RaceDashboard: React.FC = () => {
 
         <div 
           className="achievement-card clickable" 
-          onClick={() => setShowPerformanceModal(true)}
+          onClick={() => setActiveTab('performance')}
           title="Click to view performance chart"
         >
           <div className="achievement-icon">
@@ -434,8 +489,9 @@ export const RaceDashboard: React.FC = () => {
       </div>
 
       {/* Recent Race Results */}
+      {activeTab === 'results' && (
       <div className="race-results-section">
-        <h2>Recent Race Results</h2>
+        <h2 className="section-title">Recent Race Results</h2>
         <div className="table-container">
           <table className="results-table">
             <thead>
@@ -462,15 +518,28 @@ export const RaceDashboard: React.FC = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
-        </div>
+        </table>
       </div>
+    </div>
+      )}
+
+      {/* Performance Chart */}
+      {activeTab === 'performance' && (
+        <div className="performance-chart-section">
+          <div className="chart-header">
+            <h2>{riderData.name}'s Race Performance Trend</h2>
+            <p className="chart-subtitle">Performance metrics across recent races</p>
+          </div>
+          <div className="chart-container">
+            <canvas ref={chartRef} style={{ maxHeight: '400px' }}></canvas>
+          </div>
+        </div>
+      )}
 
       {/* Additional Stats */}
       <div className="additional-stats">
         <div className="stat-item">
           <div className="stat-label">AVG. FINISH POSITION</div>
-          <div className="stat-value">{riderData.avg_finish_position}</div>
         </div>
         <div className="stat-item">
           <div className="stat-label">BEST LAP TIME</div>
@@ -488,8 +557,7 @@ export const RaceDashboard: React.FC = () => {
       </div>
     </div>
 
-    {/* Modals rendered via portals */}
-    {showPerformanceModal && createPortal(<PerformanceModal />, document.body)}
+    {/* Championship Modal */}
     {showChampionshipModal && createPortal(<ChampionshipModal />, document.body)}
     </>
   )

@@ -158,17 +158,25 @@
     color: #a0aec0;
     font-weight: 400;
 }
-
 /* Race Results Section */
 .race-dashboard-container .race-results-section {
     margin-bottom: 40px;
 }
 
-.race-dashboard-container .race-results-section h2 {
+.race-dashboard-container .race-results-section h2,
+.race-dashboard-container .section-title {
     font-size: 1.5rem;
     font-weight: 600;
     color: #ffffff;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.race-dashboard-container .chart-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -517,8 +525,211 @@
     .race-dashboard-container .achievement-number {
         font-size: 2rem;
     }
-    
-    .race-dashboard-container .table-container {
-        overflow-x: auto;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-button {
+    background: transparent;
+    border: none;
+    color: #a0aec0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    position: relative;
+    bottom: -2px;
+}
+
+.tab-button i {
+    margin-right: 8px;
+}
+
+.tab-button:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tab-button.active {
+    color: #48bb78;
+    border-bottom-color: #48bb78;
+    background: rgba(72, 187, 120, 0.1);
+}
+
+/* Performance Chart Section */
+.performance-chart-section {
+    background: rgba(45, 55, 72, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+}
+
+.performance-chart-section .chart-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.performance-chart-section .chart-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.performance-chart-section .chart-subtitle {
+    color: #a0aec0;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.performance-chart-section .chart-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    min-height: 400px;
+}
+
+/* Modal Styles for Performance Chart */
+.race-dashboard-container.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+    backdrop-filter: blur(8px);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.race-dashboard-container.modal .modal-content {
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.race-dashboard-container.modal .modal-header {
+    padding: 30px;
+    border-bottom: 2px solid rgba(93, 173, 226, 0.3);
+    position: relative;
+}
+
+.race-dashboard-container.modal .modal-header h2 {
+    color: white;
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.race-dashboard-container.modal .modal-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.race-dashboard-container.modal .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.race-dashboard-container.modal .close-modal:hover {
+    background: var(--cycling-cyan);
+    transform: rotate(90deg);
+}
+
+.race-dashboard-container.modal .modal-body {
+    padding: 30px;
+}
+
+.race-dashboard-container.modal .chart-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.race-dashboard-container.modal .championship-summary {
+    margin-bottom: 30px;
+}
+
+.race-dashboard-container.modal .summary-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.race-dashboard-container.modal .summary-stat {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.race-dashboard-container.modal .summary-stat h3 {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin: 0 0 10px 0;
+}
+
+.race-dashboard-container.modal .summary-stat p {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
