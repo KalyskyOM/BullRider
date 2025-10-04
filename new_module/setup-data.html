@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Dashboard Data</title>
+</head>
+<body>
+    <h1>Setting up Dashboard Data...</h1>
+    <div id="status"></div>
+
+    <script>
+        async function setupData() {
+            const statusDiv = document.getElementById('status');
+            
+            try {
+                // First, get the riders
+                statusDiv.innerHTML = 'Loading riders...';
+                const ridersResponse = await fetch('/tables/riders');
+                const ridersData = await ridersResponse.json();
+                const riders = ridersData.data || [];
+                
+                if (riders.length === 0) {
+                    statusDiv.innerHTML = 'No riders found!';
+                    return;
+                }
+                
+                // Find Mael's rider ID
+                const maelRider = riders.find(r => r.name === 'MAEL MASSOUTIE BOVER');
+                if (!maelRider) {
+                    statusDiv.innerHTML = 'Mael rider not found!';
+                    return;
+                }
+                
+                statusDiv.innerHTML = `Found Mael with ID: ${maelRider.id}<br>Adding race results...`;
+                
+                // Race results for Mael
+                const raceResults = [
+                    {
+                        rider_id: maelRider.id,
+                        date: "2025-05-25",
+                        event: "Montefaro Enduro Race (season finale)",
+                        category: "Cadete",
+                        position: "1st",
+                        time: "-",
+                        is_winner: true,
+                        event_type: "Enduro",
+                        season: "2025"
+                    },
+                    {
+                        rider_id: maelRider.id,
+                        date: "2025-04-13",
+                        event: "V Enduro Monte Castelo Burela",
+                        category: "Elite/Absolute",
+                        position: "1st",
+                        time: "13:20:64",
+                        is_winner: true,
+                        event_type: "Enduro",
+                        season: "2025"
+                    },
+                    {
+                        rider_id: maelRider.id,
+                        date: "2025-03-23",
+                        event: "EnduBítem (7è EnduBítem)",
+                        category: "Cadete",
+                        position: "1st",
+                        time: "-",
+                        is_winner: true,
+                        event_type: "Enduro",
+                        season: "2025"
+                    },
+                    {
+                        rider_id: maelRider.id,
+                        date: "2025-03-16",
+                        event: "Reino de los Mallos Enduro MTB Race",
+                        category: "Absolute/Elite",
+                        position: "2nd",
+                        time: "14:10",
+                        is_winner: false,
+                        event_type: "Enduro",
+                        season: "2025"
+                    },
+                    {
+                        rider_id: maelRider.id,
+                        date: "2025-03-09",
+                        event: "XXXI Gran Premio Maxxis - Sant Andreu de la Barca (Final)",
+                        category: "Cadete",
+                        position: "5th",
+                        time: "58:86",
+                        is_winner: false,
+                        event_type: "Enduro",
+                        season: "2025"
+                    },
+                    {
+                        rider_id: maelRider.id,
+                        date: "2024-11-10",
+                        event: "Copa Catalana Enduro Season closing (Gavarres Gravity)",
+                        category: "Cadete",
+                        position: "1st",
+                        time: "-",
+                        is_winner: true,
+                        event_type: "Enduro",
+                        season: "2024"
+                    },
+                    {
+                        rider_id: maelRider.id,
+                        date: "2024-09-08",
+                        event: "Copa de Catalunya Enduro",
+                        category: "Elite",
+                        position: "1st",
+                        time: "2:45:32",
+                        is_winner: true,
+                        event_type: "Enduro",
+                        season: "2024"
+                    },
+                    {
+                        rider_id: maelRider.id,
+                        date: "2024-08-04",
+                        event: "Mordoride DH",
+                        category: "U17 Homme",
+                        position: "6th",
+                        time: "3:33:267",
+                        is_winner: false,
+                        event_type: "DH",
+                        season: "2024"
+                    },
+                    {
+                        rider_id: maelRider.id,
+                        date: "2024-05-05",
+                        event: "Super Enduro Arfa (Copa de España / Copa Catalana)",
+                        category: "Cadete",
+                        position: "15th",
+                        time: "18:08:54",
+                        is_winner: false,
+                        event_type: "Enduro",
+                        season: "2024"
+                    },
+                    {
+                        rider_id: maelRider.id,
+                        date: "2024-03-24",
+                        event: "Copa de España Enduro",
+                        category: "Elite",
+                        position: "1st",
+                        time: "3:12:18",
+                        is_winner: true,
+                        event_type: "Enduro",
+                        season: "2024"
+                    },
+                    {
+                        rider_id: maelRider.id,
+                        date: "2024-03-15",
+                        event: "Campeonato Catalunya",
+                        category: "Elite",
+                        position: "3rd",
+                        time: "2:58:44",
+                        is_winner: false,
+                        event_type: "Enduro",
+                        season: "2024"
+                    },
+                    {
+                        rider_id: maelRider.id,
+                        date: "2024-02-20",
+                        event: "Copa Catalunya Enduro",
+                        category: "Elite",
+                        position: "1st",
+                        time: "2:41:09",
+                        is_winner: true,
+                        event_type: "Enduro",
+                        season: "2024"
+                    }
+                ];
+                
+                // Add each result
+                for (const result of raceResults) {
+                    const response = await fetch('/tables/race_results', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(result)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`Failed to add result: ${response.statusText}`);
+                    }
+                }
+                
+                statusDiv.innerHTML = `✅ Successfully added ${raceResults.length} race results!<br><a href="index.html">Go to Dashboard</a>`;
+                
+            } catch (error) {
+                statusDiv.innerHTML = `❌ Error: ${error.message}`;
+                console.error('Setup error:', error);
+            }
+        }
+        
+        // Run setup when page loads
+        setupData();
+    </script>
+</body>
+</html>

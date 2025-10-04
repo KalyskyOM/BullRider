@@ -116,7 +116,7 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/latest-blog.css" rel="stylesheet" />
         <link href="/static/race-performance.css" rel="stylesheet" />
         <link href="/static/blog-modal.css" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+        <link href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
         
         {/* Preload critical resources */}
         <link rel="preload" href="/static/hero-bg.jpg" as="image" />
@@ -201,7 +201,6 @@ export const renderer = jsxRenderer(({ children }) => {
         </footer>
 
         {/* JavaScript */}
-        <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
         <script src="/static/app.js"></script>
       </body>
     </html>

@@ -1,0 +1,31 @@
+CYCLING DASHBOARD PROJECT FILES
+================================
+
+To recreate this project, create these files with the following content:
+
+FILE STRUCTURE:
+cycling-dashboard/
+├── index.html
+├── css/style.css
+├── js/main.js
+├── data/mael_results.csv
+└── README.md
+
+MAIN FEATURES:
+- Interactive cycling race dashboard
+- Performance chart modal (Chart.js)
+- Championship wins modal with CSV data
+- Responsive dark theme design
+- Real race results from verified sources
+
+To get the complete file contents:
+1. Ask for specific files (index.html, css/style.css, js/main.js)
+2. Copy and paste the content into local files
+3. Open index.html in your browser
+
+The dashboard includes:
+- Mael Massoutie Bover's race profile
+- Interactive performance charts
+- Championship wins with detailed race data
+- Responsive design for all devices
+- Professional cycling theme styling
